@@ -12,22 +12,23 @@ import React, { Component } from 'react';
 
 // Styles et assets
 /* import './app.sass'; */
+import { Link } from 'react-router-dom';
 
 /**
  * Code
  */
 class Point extends Component {
-  constructor({ point, selectPoint }) {
+  constructor({ point }) {
     super();
     this.point = point;
-    this.selectPoint = selectPoint;
+    this.target = "/point/" + this.point.id;
   }
 
   render() {
     return (
       <li className="point">
-        <span className="label">{this.point.label}</span>
-        <button type="submit" className="circle" onClick={this.selectPoint} value={this.point.id}>ok</button>
+        <span className="label">{this.point.label} </span>
+        <Link to={this.target} className="circle">go</Link>
       </li>
     );
   }

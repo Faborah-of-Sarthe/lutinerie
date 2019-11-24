@@ -51,13 +51,13 @@
   },
   "dependencies": {
     "@babel/polyfill": "*",
-    "@cerati/react-mercure": "*",
     "classnames": "*",
     "http-server": "^0.11.1",
     "prop-types": "*",
     "react": "*",
     "react-dom": "*",
     "react-redux": "*",
+    "react-router-dom": "^5.1.2",
     "redux": "*",
     "uuid": "^3.3.3"
   }

@@ -18,7 +18,7 @@ import './app.sass';
 /**
  * Code
  */
-class App extends Component {
+class Dashboard extends Component {
   constructor() {
     super();
     const url = new URL('http://localhost:3000/.well-known/mercure');
@@ -46,11 +46,6 @@ class App extends Component {
     ],
   }
 
-  selectPoint = (e) => {
-    e.preventDefault();
-    console.log('clicked');
-  }
-
   render() {
     const { points } = this.state;
     return (
@@ -66,4 +61,4 @@ class App extends Component {
 /**
  * Export
  */
-export default App;
+export default Dashboard;

@@ -12,23 +12,22 @@ import React, { Component } from 'react';
 
 // Styles et assets
 /* import './app.sass'; */
+// import { Link } from 'react-router-dom';
 
 /**
  * Code
  */
-class Task extends Component {
-  constructor({ task, deleteTask }) {
+class PointPage extends Component {
+  constructor({ id }) {
     super();
-    this.task = task;
-    this.deleteTask = deleteTask;
+    this.id = id;
   }
 
   render() {
     return (
-      <li className="task">
-        <span className="label">{this.task.label}</span>
-        <button type="submit" className="delete" onClick={this.deleteTask} value={this.task.id}>X</button>
-      </li>
+      <div className="pointpage">
+        <span className="id">{ this.id }</span>
+      </div>
     );
   }
 
@@ -40,4 +39,4 @@ class Task extends Component {
 /**
  * Export
  */
-export default Task;
+export default PointPage;
