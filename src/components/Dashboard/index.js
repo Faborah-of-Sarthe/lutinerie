@@ -2,7 +2,7 @@
  * Import
  */
 import React, { Component } from 'react';
-import uuid from 'uuid/v4';
+import axios from 'axios';
 
 /**
  * Local import
@@ -21,29 +21,47 @@ import './app.sass';
 class Dashboard extends Component {
   constructor() {
     super();
-    const url = new URL('http://localhost:3000/.well-known/mercure');
-    url.searchParams.append('topic', 'http://localhost:3000/demo/books/1.jsonld');
-    const eventSource = new EventSource(url);
-    eventSource.onmessage = (e) => {
-      console.log(e.data);
-      const newPointlist = [...JSON.parse(e.data)];
-      console.log(newPointlist);
-      this.setState({ points: newPointlist });
-    };
+
+    // Call axios and get data in state
+    this.getDataFromBack();
+
+    // Mercure event definition
+    // const url = new URL(process.env.REACT_APP_MERCURE_HUB);
+    // url.searchParams.append('topic', process.env.REACT_APP_MERCURE_TOPIC_URL);
+    // const eventSource = new EventSource(url);
+    // eventSource.onmessage = (e) => {
+    //   this.applyMercureUpdate(e);
+    // };
   }
 
   state = {
     // TODO remplir avec données du back
     points: [
       {
-        id: uuid(),
+        id: 'hifsefsdifuosdf',
         label: 'Sacramento',
       },
       {
-        id: uuid(),
+        id: 'zsefiusdfoopp',
         label: 'Sartrouville',
       },
     ],
+  }
+
+  getDataFromBack = () => {
+    axios.get(`${process.env.REACT_APP_BACK_URL}getpoints.php`)
+      .then((response) => {
+        this.setState({ points: response.data });
+      })
+      .catch((error) => {
+        alert(error);
+      });
+  }
+
+  applyMercureUpdate = (e) => {
+    const newPointlist = [...JSON.parse(e.data)];
+    console.log(newPointlist);
+    this.setState({ points: newPointlist });
   }
 
   render() {

@@ -1,29 +1,34 @@
 <?php
 
 $points = [
-  1 => [
-    'city' => 'Sacramento',
+  [
+    'id' => 1,
+    'label' => 'Sacramento',
     'hacked' => true,
-    'repaired' => 'false',
+    'repaired' => false,
   ],
-  2 => [
-    'city' => 'Sartrouville',
+  [
+    'id' => 2,
+    'label' => 'Sartrouville',
     'hacked' => true,
-    'repaired' => 'false',
+    'repaired' => true,
   ],
-  3 => [
-    'city' => 'Lisbonne',
+  [
+    'id' => 3,
+    'label' => 'Lisbonne',
     'hacked' => false,
-    'repaired' => 'false',
+    'repaired' => false,
   ],
-  4 => [
-    'city' => 'Sao Paulo',
+  [
+    'id' => 4,
+    'label' => 'Sao Paulo',
     'hacked' => true,
-    'repaired' => 'false',
+    'repaired' => false,
   ],
-  5 => [
-    'city' => 'Tokyo',
+  [
+    'id' => 5,
+    'label' => 'Tokyo',
     'hacked' => false,
-    'repaired' => 'false',
+    'repaired' => false,
   ],
 ];

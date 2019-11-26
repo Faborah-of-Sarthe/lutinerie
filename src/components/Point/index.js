@@ -3,16 +3,14 @@
  * Import
  */
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 /* import PropTypes from 'prop-types'; */
 
 /**
  * Local import
  */
-// Composants
-
 // Styles et assets
-/* import './app.sass'; */
-import { Link } from 'react-router-dom';
+import './point.sass';
 
 /**
  * Code
@@ -22,13 +20,21 @@ class Point extends Component {
     super();
     this.point = point;
     this.target = "/point/" + this.point.id;
+    this.statusClass = 'state1'; // default value
+    if (this.point.hacked === true ) {
+      if (this.point.repaired === true) {
+        this.statusClass = 'state3';
+      } else {
+        this.statusClass = 'state2';
+      }
+    }
   }
 
   render() {
     return (
       <li className="point">
-        <span className="label">{this.point.label} </span>
-        <Link to={this.target} className="circle">go</Link>
+        <span className="label">{this.point.label}</span>
+        <Link to={this.target} className={`circle ${this.statusClass}`}>go</Link>
       </li>
     );
   }
