@@ -21,6 +21,13 @@ class Point extends Component {
     this.point = point;
     this.target = "/point/" + this.point.id;
     this.statusClass = 'state1'; // default value
+  }
+
+  componentDidUpdate() {
+    console.log('didupdate');
+  }
+
+  render() {
     if (this.point.hacked === true ) {
       if (this.point.repaired === true) {
         this.statusClass = 'state3';
@@ -28,9 +35,6 @@ class Point extends Component {
         this.statusClass = 'state2';
       }
     }
-  }
-
-  render() {
     return (
       <li className="point">
         <span className="label">{this.point.label}</span>

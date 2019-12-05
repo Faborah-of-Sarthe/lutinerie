@@ -1,32 +1,27 @@
 <?php
 
 $points = [
-  [
-    'id' => 1,
+  1 => [
     'label' => 'Sacramento',
     'hacked' => true,
     'repaired' => false,
   ],
-  [
-    'id' => 2,
+  2 => [
     'label' => 'Sartrouville',
     'hacked' => true,
-    'repaired' => true,
+    'repaired' => false,
   ],
-  [
-    'id' => 3,
+  3 => [
     'label' => 'Lisbonne',
     'hacked' => false,
     'repaired' => false,
   ],
-  [
-    'id' => 4,
+  4 => [
     'label' => 'Sao Paulo',
     'hacked' => true,
-    'repaired' => false,
+    'repaired' => true,
   ],
-  [
-    'id' => 5,
+  5 => [
     'label' => 'Tokyo',
     'hacked' => false,
     'repaired' => false,

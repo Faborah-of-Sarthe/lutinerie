@@ -19,33 +19,21 @@ import './app.sass';
  * Code
  */
 class Dashboard extends Component {
-  constructor() {
-    super();
+  state = {
+    points: [],
+  }
 
+  componentDidMount() {
     // Call axios and get data in state
     this.getDataFromBack();
 
     // Mercure event definition
-    // const url = new URL(process.env.REACT_APP_MERCURE_HUB);
-    // url.searchParams.append('topic', process.env.REACT_APP_MERCURE_TOPIC_URL);
-    // const eventSource = new EventSource(url);
-    // eventSource.onmessage = (e) => {
-    //   this.applyMercureUpdate(e);
-    // };
-  }
-
-  state = {
-    // TODO remplir avec données du back
-    points: [
-      {
-        id: 'hifsefsdifuosdf',
-        label: 'Sacramento',
-      },
-      {
-        id: 'zsefiusdfoopp',
-        label: 'Sartrouville',
-      },
-    ],
+    const url = new URL(process.env.REACT_APP_MERCURE_HUB);
+    url.searchParams.append('topic', process.env.REACT_APP_MERCURE_TOPIC_URL);
+    const eventSource = new EventSource(url);
+    eventSource.onmessage = (e) => {
+      this.applyMercureUpdate(e);
+    };
   }
 
   getDataFromBack = () => {
