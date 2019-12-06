@@ -8,5 +8,5 @@ dist/*
 Thumbs.db
 
 yarn-error.log
-
+yarn.lock
 .env.*

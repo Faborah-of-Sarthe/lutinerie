@@ -1,5 +1,5 @@
 <?php
-
+header("Access-Control-Allow-Origin: *");
 function arrayPHPtoJS($arrayPHP) {
   $arrayJS = [];
   foreach ($arrayPHP as $id => $point) {
