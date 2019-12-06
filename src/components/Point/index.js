@@ -15,37 +15,25 @@ import './point.sass';
 /**
  * Code
  */
-class Point extends Component {
-  constructor({ point }) {
-    super();
-    this.point = point;
-    this.target = "/point/" + this.point.id;
-    this.statusClass = 'state1'; // default value
-  }
+const Point = ({ point }) => {
 
-  componentDidUpdate() {
-    console.log('didupdate');
-  }
+  const target = "/point/" + point.id;
+  let statusClass = 'state1'; // default value
 
-  render() {
-    if (this.point.hacked === true ) {
-      if (this.point.repaired === true) {
-        this.statusClass = 'state3';
-      } else {
-        this.statusClass = 'state2';
-      }
+  if (point.hacked === true ) {
+    if (point.repaired === true) {
+      statusClass = 'state3';
+    } else {
+      statusClass = 'state2';
     }
-    return (
-      <li className="point">
-        <span className="label">{this.point.label}</span>
-        <Link to={this.target} className={`circle ${this.statusClass}`}>go</Link>
-      </li>
-    );
   }
 
-/*   propTypes = {
-    label: PropTypes.string.isRequired,
-  } */
+  return (
+    <li className="point">
+      <span className="label">{point.label}</span>
+      <Link to={target} className={`circle ${statusClass}`}>go</Link>
+    </li>
+  );
 }
 
 /**
