@@ -17,15 +17,13 @@ import './point.sass';
  */
 const Point = ({ point }) => {
 
-  const target = "/point/" + point.id;
+  const target = "/point/" + point.slug;
   let statusClass = 'state1'; // default value
 
-  if (point.hacked === true ) {
-    if (point.repaired === true) {
-      statusClass = 'state3';
-    } else {
-      statusClass = 'state2';
-    }
+  if (point.repaired == 1) {
+    statusClass = 'state3';
+  } else {
+    statusClass = 'state2';
   }
 
   return (

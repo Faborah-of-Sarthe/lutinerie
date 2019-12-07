@@ -1,6 +1,7 @@
 node_modules/
 dist/*
 !dist/back/
+dist/back/config.php
 .vs/
 .vs-code/
 

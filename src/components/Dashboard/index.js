@@ -37,7 +37,7 @@ class Dashboard extends Component {
   }
 
   getDataFromBack = () => {
-    axios.get(`${process.env.REACT_APP_BACK_URL}getpoints.php`)
+    axios.get(`${process.env.REACT_APP_BACK_URL}getPoints.php`)
       .then((response) => {
         this.setState({ points: response.data });
       })

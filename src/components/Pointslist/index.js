@@ -20,7 +20,7 @@ class Pointslist extends Component {
     return (
       <ul id="Pointlist" key="pointlist">
         {this.props.points.map((point, i) => (
-          <Point point={point} key={point.id} />
+          <Point point={point} key={point.slug} />
         ))
         }
       </ul>
