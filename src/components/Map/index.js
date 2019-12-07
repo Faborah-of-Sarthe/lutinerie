@@ -13,7 +13,7 @@ class Map extends React.Component {
     }
 
     render() {
-        const {points} = this.props;  
+        const {points} = this.props;
         return (
 
             <div>
@@ -54,11 +54,11 @@ class Map extends React.Component {
                         ))
                     }
                 </Geographies>
-                {points.map(({ id, label, lat, long, hacked, repaired }) => (
-                    <Link to={`/point/${id}`}>
-                        <Marker   key={label} coordinates={[long,lat]}>
-                            <circle data-tip={label} r={10} fill={!repaired ? '#F00': '#0F0'} />
-                    
+                {points.map(({ slug, label, repaired, latitude, longitude }) => (
+                    <Link to={`/point/${slug}`}>
+                        <Marker   key={label} coordinates={[longitude,latitude]}>
+                            <circle data-tip={label} r={10} fill={(repaired == "1") ? '#F00': '#0F0'} />
+
                         </Marker>
                     </Link>
                 ))}
@@ -66,7 +66,7 @@ class Map extends React.Component {
             </ComposableMap>
             <ReactTooltip />
             </div>
-        )  
+        )
     };
 };
 
