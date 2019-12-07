@@ -1,6 +1,7 @@
 import React from "react";
 import { ComposableMap, Geographies, Geography, ZoomableGroup, Marker } from "react-simple-maps";
 import ReactTooltip from 'react-tooltip';
+import { Link } from 'react-router-dom';
 
 
 const geoUrl =
@@ -53,11 +54,13 @@ class Map extends React.Component {
                         ))
                     }
                 </Geographies>
-                {points.map(({ label, lat, long, hacked, repaired }) => (
-                    <Marker   key={label} coordinates={[long,lat]}>
-                        <circle data-tip={label} r={10} fill={!repaired ? '#F00': '#0F0'} />
-                
-                    </Marker>
+                {points.map(({ id, label, lat, long, hacked, repaired }) => (
+                    <Link to={`/point/${id}`}>
+                        <Marker   key={label} coordinates={[long,lat]}>
+                            <circle data-tip={label} r={10} fill={!repaired ? '#F00': '#0F0'} />
+                    
+                        </Marker>
+                    </Link>
                 ))}
             </ZoomableGroup>
             </ComposableMap>
