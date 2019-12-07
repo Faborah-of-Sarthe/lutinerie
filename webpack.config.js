@@ -14,7 +14,7 @@ const host = 'localhost';
 const port = 3030;
 
 const devMode = process.env.NODE_ENV !== 'production';
-const env = DotenvPlugin.config().parsed;
+const env = DotenvPlugin.config({ path: '.env.' + process.env.NODE_ENV}).parsed;
 // reduce it to a nice object, the same as before
 const envKeys = Object.keys(env).reduce((prev, next) => {
   prev[`process.env.${next}`] = JSON.stringify(env[next]);
