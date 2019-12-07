@@ -34,6 +34,7 @@
     "postcss-loader": "*",
     "sass-loader": "*",
     "style-loader": "*",
+    "typescript": "^3.7.3",
     "uglifyjs-webpack-plugin": "*",
     "webpack": "*",
     "webpack-cli": "*",
@@ -41,7 +42,7 @@
   },
   "scripts": {
     "test": "NODE_PATH=./ mocha --require babel-core/register --require tests/.setup.js tests/**/*.test.js",
-    "start": "NODE_ENV=development webpack-dev-server",
+    "start": "NODE_ENV=development webpack-dev-server --watch-poll",
     "clean": "rm -rf dist",
     "clean:all": "rm -rf dist node_modules",
     "build:dev": "NODE_ENV=development webpack",
@@ -60,6 +61,9 @@
     "react-dom": "*",
     "react-redux": "*",
     "react-router-dom": "^5.1.2",
+    "react-scripts": "^3.3.0",
+    "react-simple-maps": "^1.0.0-beta.0",
+    "react-tooltip": "^3.11.1",
     "redux": "*",
     "uuid": "^3.3.3"
   }
