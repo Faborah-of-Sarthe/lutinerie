@@ -9,6 +9,7 @@ import axios from 'axios';
  */
 // Composants
 import Pointslist from '../Pointslist';
+import Map from '../Map';
 /* import Form from '../Form'; */
 
 // Styles et assets
@@ -58,7 +59,8 @@ class Dashboard extends Component {
       <div id="app">
         <h1 id="app-title">Lutinerie - The game</h1>
         <p id="app-content">(brief d intro)</p>
-        <Pointslist points={points} selectPoint={this.selectPoint} />
+        {/* <Pointslist points={points} selectPoint={this.selectPoint} /> */}
+        <Map points={points} />
       </div>
     );
   }

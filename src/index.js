@@ -20,7 +20,7 @@ import store from 'src/store';
 
 /**
  * Code
- */
+ */    
 const rootComponent = (
   <Provider store={store}>
     <BrowserRouter>
