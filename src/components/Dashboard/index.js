@@ -59,7 +59,6 @@ class Dashboard extends Component {
       <div id="app">
         <h1 id="app-title">Lutinerie - The game</h1>
         <p id="app-content">(brief d intro)</p>
-        {/* <Pointslist points={points} selectPoint={this.selectPoint} /> */}
         <Map points={points} />
       </div>
     );
