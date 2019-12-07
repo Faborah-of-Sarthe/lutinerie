@@ -18,15 +18,16 @@ import React, { Component } from 'react';
  * Code
  */
 class PointPage extends Component {
-  constructor({ id }) {
+  constructor({ slug }) {
     super();
-    this.id = id;
+    this.slug = slug;
   }
 
   render() {
     return (
       <div className="pointpage">
-        <span className="id">{ this.id }</span>
+        <Link to={`/`}>Retour</Link>
+        <h1 className="slug">{ this.slug }</h1>
       </div>
     );
   }
