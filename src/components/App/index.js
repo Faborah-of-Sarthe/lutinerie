@@ -6,7 +6,7 @@ import store  from 'src/store';
 import { updatePoints } from 'src/store/reducer'
 
 
-
+import Welcome from 'src/components/Welcome';
 import Dashboard from 'src/containers/Dashboard';
 
 
@@ -23,12 +23,14 @@ class App extends Component {
         });
     }
     render() {
+        const {bureau} = store.getState();
         return (
             <BrowserRouter>
                 <main>
                     <Switch>
                     <Route exact path="/">
-                        <Dashboard />
+                        { !bureau && <Welcome /> }
+                        { bureau && <Dashboard /> }
                     </Route>
                     {/* on crée un composant intermédiaire via la prop render avant d'appeler le notre */}
                     <Route

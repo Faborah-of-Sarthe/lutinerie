@@ -35,3 +35,4 @@ store.dispatch(mercurePoints());
  * Export
  */
 export default store;
+ 
