@@ -12,7 +12,8 @@ import React, { Component } from 'react';
 
 // Styles et assets
 /* import './app.sass'; */
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import PasswordInput from '../PasswordInput';
 
 /**
  * Code
@@ -28,13 +29,12 @@ class PointPage extends Component {
       <div className="pointpage">
         <Link to={`/`}>Retour</Link>
         <h1 className="slug">{ this.slug }</h1>
+        { (this.slug == 'saragossa' || this.slug == 'sahara') &&
+          <PasswordInput slug={ this.slug } key={ this.slug } />
+        }
       </div>
     );
   }
-
-/*   propTypes = {
-    label: PropTypes.string.isRequired,
-  } */
 }
 
 /**

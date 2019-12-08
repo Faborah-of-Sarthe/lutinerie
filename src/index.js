@@ -20,7 +20,7 @@ import store from 'src/store';
 
 /**
  * Code
- */    
+ */
 const rootComponent = (
   <Provider store={store}>
     <BrowserRouter>
@@ -34,7 +34,7 @@ const rootComponent = (
             path="/point/:id"
             render={({history, match, location}) => {
               const { id } = match.params;
-              return <PointPage id={id} />
+              return <PointPage slug={id} />
             }}
           />
           <Route>

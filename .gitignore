@@ -1,5 +1,6 @@
 node_modules/
 dist/*
+!dist/.htaccess
 !dist/back/
 dist/back/config.php
 .vs/
