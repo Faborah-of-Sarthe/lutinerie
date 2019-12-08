@@ -1,14 +1,18 @@
 /**
  * Initial State
  */
-const initialState = {
-  message: 'Hello',
+export const initialState = {
+  points: [],
+  bureau: '',
 };
 
 /**
  * Types
  */
 const DO_SOMETHING = 'DO_SOMETHING';
+
+export const MERCURE_POINTS = 'MERCURE_POINTS';
+const UPDATE_POINTS = 'UPDATE_POINTS';
 
 /**
  * Traitements
@@ -19,9 +23,11 @@ const DO_SOMETHING = 'DO_SOMETHING';
  */
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
-    case DO_SOMETHING:
+    case UPDATE_POINTS: 
+      const points = (typeof action.points == 'string') ? JSON.parse(action.points) : action.points;   
       return {
         ...state,
+        points: [...points],
       };
 
     default:
@@ -34,6 +40,17 @@ const reducer = (state = initialState, action = {}) => {
  */
 export const doSomething = () => ({
   type: DO_SOMETHING,
+});
+
+export const updatePoints = (points) => ({
+  type: UPDATE_POINTS,
+  points,
+});
+
+
+
+export const mercurePoints = () => ({
+  type: MERCURE_POINTS,
 });
 
 /**
