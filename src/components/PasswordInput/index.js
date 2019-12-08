@@ -4,6 +4,7 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 /* import PropTypes from 'prop-types'; */
 
 /**
@@ -22,6 +23,7 @@ class PasswordInput extends Component {
     this.state = {isSending: false, input: ''};
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.sendDataToBack = this.sendDataToBack.bind(this);
   }
 
   handleChange(event) {
@@ -30,14 +32,20 @@ class PasswordInput extends Component {
   }
   handleSubmit(event) {
     event.preventDefault();
-    const target = `${process.env.REACT_APP_BACK_URL}checkPasswords.php`;
     const data = {
       slug: this.slug,
       password: this.state.input
     }
-    const qs = require('qs');
 
+    this.toastId = null;
+    this.toastId = toast("Envoi en cours", { autoClose: false });
     this.setState({ isSending: true });
+    setTimeout(() => { this.sendDataToBack(data) }, 2000);
+  }
+
+  sendDataToBack(data) {
+    const target = `${process.env.REACT_APP_BACK_URL}checkPasswords.php`;
+    const qs = require('qs');
 
     axios({
       method: 'post',
@@ -49,8 +57,18 @@ class PasswordInput extends Component {
         isSending: false
       });
       if (res.data.status == 1) {
-        alert(res.data.message);
-        this.props.history.push("/");
+        toast.update(this.toastId, {
+          render: res.data.message,
+          type: toast.TYPE.SUCCESS,
+          autoClose: 4000
+        });
+        setTimeout(() => { this.props.history.push("/") }, 1000);
+      } else if (res.data.message){
+        toast.update(this.toastId, {
+          render: res.data.message,
+          type: toast.TYPE.ERROR,
+          autoClose: 4000
+        });
       }
     })
     .catch(function (error) {

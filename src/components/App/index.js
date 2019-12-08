@@ -3,7 +3,9 @@ import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import axios from 'axios';
 import store  from 'src/store';
-import { updatePoints } from 'src/store/reducer'
+import { updatePoints } from 'src/store/reducer';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 import Welcome from 'src/containers/Welcome';
@@ -14,7 +16,6 @@ import PointPage from 'src/components/PointPage';
 class App extends Component {
 
     componentDidMount(){
-        
         axios.get(`${process.env.REACT_APP_BACK_URL}getPoints.php`)
         .then((response) => {
             store.dispatch(updatePoints(response.data));
@@ -26,10 +27,11 @@ class App extends Component {
     render() {
         const {bureau} = this.props;
         console.log(bureau);
-        
+
         return (
             <BrowserRouter>
                 <main>
+                    <ToastContainer autoClose={4000} />
                     <Switch>
                     <Route exact path="/">
                         { !bureau && <Welcome /> }
