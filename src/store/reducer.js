@@ -1,3 +1,4 @@
+import  Cookies from 'universal-cookie';
 /**
  * Initial State
  */
@@ -31,6 +32,10 @@ const reducer = (state = initialState, action = {}) => {
         points: [...points],
       };
     case SET_BUREAU: 
+      let cookie = new Cookies;
+      let d = new Date().getTime() + (60 * 60 * 24 * 1000)
+      d = new Date(d);
+      cookie.set('bureau', action.bureau,{path: '/', expires: d});
       return {
         ...state,
         bureau: action.bureau,

@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import axios from 'axios';
+import Cookies from 'universal-cookie';
 import store  from 'src/store';
 import { updatePoints } from 'src/store/reducer'
 
@@ -9,6 +10,7 @@ import { updatePoints } from 'src/store/reducer'
 import Welcome from 'src/containers/Welcome';
 import Dashboard from 'src/containers/Dashboard';
 import PointPage from 'src/components/PointPage';
+import { setBureau } from '../../store/reducer';
 
 
 class App extends Component {
@@ -22,6 +24,12 @@ class App extends Component {
         .catch((error) => {
           alert(error);
         });
+
+        let cookie = new Cookies;
+        let bureau = cookie.get('bureau');
+        if(bureau){
+            store.dispatch(setBureau(bureau));
+        }
     }
     render() {
         const {bureau} = this.props;

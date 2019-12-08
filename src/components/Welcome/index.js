@@ -41,8 +41,7 @@ class Welcome extends Component {
             });
             if (res.data.error == true) {
                 alert(res.data.message);
-            }else {
-                
+            }else {                
                 setBureau(res.data.message);
             }
         })
