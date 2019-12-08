@@ -4,8 +4,6 @@ import ReactTooltip from 'react-tooltip';
 import { Link } from 'react-router-dom';
 
 
-const geoUrl =
-  "https://raw.githubusercontent.com/zcreativelabs/react-simple-maps/master/topojson-maps/world-110m.json";
 
 class Map extends React.Component {
     componentDidUpdate() {
@@ -14,6 +12,7 @@ class Map extends React.Component {
 
     render() {
         const {points} = this.props;
+        const geoUrl = require('./map.json');
         return (
 
             <div>
