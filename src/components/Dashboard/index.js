@@ -9,6 +9,7 @@ import axios from 'axios';
  */
 // Composants
 import Pointslist from '../Pointslist';
+import store from 'src/store';
 import Map from '../Map';
 /* import Form from '../Form'; */
 
@@ -26,15 +27,9 @@ class Dashboard extends Component {
 
   componentDidMount() {
     // Call axios and get data in state
-    this.getDataFromBack();
+    // this.getDataFromBack();
 
-    // Mercure event definition
-    const url = new URL(process.env.REACT_APP_MERCURE_HUB);
-    url.searchParams.append('topic', process.env.REACT_APP_MERCURE_TOPIC_URL);
-    const eventSource = new EventSource(url);
-    eventSource.onmessage = (e) => {
-      this.applyMercureUpdate(e);
-    };
+    
   }
 
   getDataFromBack = () => {
@@ -49,12 +44,11 @@ class Dashboard extends Component {
 
   applyMercureUpdate = (e) => {
     const newPointlist = [...JSON.parse(e.data)];
-    console.log(newPointlist);
     this.setState({ points: newPointlist });
   }
 
   render() {
-    const { points } = this.state;
+    const { points } = this.props; 
     return (
       <div id="app">
         <h1 id="app-title">Lutinerie - The game</h1>
