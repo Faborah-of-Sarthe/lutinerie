@@ -44,11 +44,12 @@ class PasswordInput extends Component {
       url: target,
       data: qs.stringify(data)
     }).then(res => {
+      console.log(res.data);
       this.setState({
         isSending: false
       });
-      if (res.data == 1) {
-        alert('ouiiii');
+      if (res.data.status == 1) {
+        alert(res.data.message);
         this.props.history.push("/");
       }
     })

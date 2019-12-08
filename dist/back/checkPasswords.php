@@ -7,16 +7,28 @@ if (!empty($_POST) && isset($_POST['slug'])):
   $pwdToGuess = getPointPassword($currentSlug);
 
   if (!isset($_POST["password"])) {
-    echo json_encode('Pas de mot de passe à vérifer');
+    echo json_encode([
+      "status" => 0,
+      "message" => "Erreur technique : pas de mot de passe à vérifer",
+    ]);
   }
 
   if ($_POST["password"] == $pwdToGuess) {
     registerPointRepairment($currentSlug);
-    echo json_encode(1);
+    echo json_encode([
+      "status" => 1,
+      "message" => "Le point stratégique a bien été réparé.",
+    ]);
   } else {
-    echo json_encode(0);
+    echo json_encode([
+      "status" => 0,
+      "message" => "Raté ! Ce n'est pas le bon mot de passe.",
+    ]);
   }
 
 else:
-  echo json_encode('Pas de slug à vérifer');
+  echo json_encode([
+    "status" => 0,
+    "message" => "Erreur technique : slug manquant.",
+  ]);
 endif;
