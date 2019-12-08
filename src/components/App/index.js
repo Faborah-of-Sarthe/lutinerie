@@ -6,8 +6,9 @@ import store  from 'src/store';
 import { updatePoints } from 'src/store/reducer'
 
 
-import Welcome from 'src/components/Welcome';
+import Welcome from 'src/containers/Welcome';
 import Dashboard from 'src/containers/Dashboard';
+import PointPage from 'src/components/PointPage';
 
 
 class App extends Component {
@@ -23,7 +24,9 @@ class App extends Component {
         });
     }
     render() {
-        const {bureau} = store.getState();
+        const {bureau} = this.props;
+        console.log(bureau);
+        
         return (
             <BrowserRouter>
                 <main>
@@ -37,7 +40,7 @@ class App extends Component {
                         path="/point/:id"
                         render={({history, match, location}) => {
                         const { id } = match.params;
-                        return <PointPage id={id} />
+                        return <PointPage slug={id} />
                         }}
                     />
                     <Route>

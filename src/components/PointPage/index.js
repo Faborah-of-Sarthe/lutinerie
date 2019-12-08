@@ -14,7 +14,6 @@ import { Link } from 'react-router-dom';
 
 // Styles et assets
 /* import './app.sass'; */
-import { Link } from 'react-router-dom';
 import PasswordInput from '../PasswordInput';
 
 /**

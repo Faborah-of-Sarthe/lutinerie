@@ -12,6 +12,7 @@ export const initialState = {
 const DO_SOMETHING = 'DO_SOMETHING';
 
 export const MERCURE_POINTS = 'MERCURE_POINTS';
+export const SET_BUREAU = 'SET_BUREAU';
 const UPDATE_POINTS = 'UPDATE_POINTS';
 
 /**
@@ -28,6 +29,11 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         points: [...points],
+      };
+    case SET_BUREAU: 
+      return {
+        ...state,
+        bureau: action.bureau,
       };
 
     default:
@@ -51,6 +57,11 @@ export const updatePoints = (points) => ({
 
 export const mercurePoints = () => ({
   type: MERCURE_POINTS,
+});
+
+export const setBureau = (bureau) => ({
+  type: SET_BUREAU,
+  bureau,
 });
 
 /**

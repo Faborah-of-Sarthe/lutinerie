@@ -21,7 +21,9 @@ class Welcome extends Component {
     }
     handleSubmit = () => {
         event.preventDefault();
-        const target = `${process.env.REACT_APP_BACK_URL}adefinir.php`;
+        const { setBureau} = this.props;
+        
+        const target = `${process.env.REACT_APP_BACK_URL}checkBureau.php`;
         const data = {
             password: this.state.input
         }
@@ -37,7 +39,11 @@ class Welcome extends Component {
             this.setState({
                 isSending: false
             });
-            if (res.data == 1) {
+            if (res.data.error == true) {
+                alert(res.data.message);
+            }else {
+                
+                setBureau(res.data.message);
             }
         })
         .catch(function (error) {
