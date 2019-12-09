@@ -15,6 +15,7 @@ import { Link } from 'react-router-dom';
 // Styles et assets
 /* import './app.sass'; */
 import PasswordInput from '../PasswordInput';
+import StPetersburgCoords from '../StPetersburgCoords';
 
 /**
  * Code
@@ -30,6 +31,9 @@ class PointPage extends Component {
       <div className="pointpage">
         <Link to={`/`}>Retour</Link>
         <h1 className="slug">{ this.slug }</h1>
+        { (this.slug == 'stpetersbourg') &&
+          <StPetersburgCoords slug={ this.slug } key={ this.slug } />
+        }
         { (this.slug == 'saragossa' || this.slug == 'sahara') &&
           <PasswordInput slug={ this.slug } key={ this.slug } />
         }
