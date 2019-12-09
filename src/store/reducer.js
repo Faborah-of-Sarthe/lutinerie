@@ -15,6 +15,8 @@ const DO_SOMETHING = 'DO_SOMETHING';
 export const MERCURE_POINTS = 'MERCURE_POINTS';
 export const SET_BUREAU = 'SET_BUREAU';
 const UPDATE_POINTS = 'UPDATE_POINTS';
+export const BUREAU_1 = 'sarthe';
+export const BUREAU_2 = 'savoie';
 
 /**
  * Traitements

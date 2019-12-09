@@ -34,7 +34,6 @@ class App extends Component {
     }
     render() {
         const {bureau} = this.props;
-        console.log(bureau);
 
         return (
             <BrowserRouter>
@@ -50,7 +49,7 @@ class App extends Component {
                         path="/point/:id"
                         render={({history, match, location}) => {
                         const { id } = match.params;
-                        return <PointPage slug={id} />
+                        return <PointPage slug={id} store={store} />
                         }}
                     />
                     <Route>
