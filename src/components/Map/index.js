@@ -3,6 +3,7 @@ import { ComposableMap, Geographies, Geography, ZoomableGroup, Marker } from "re
 import ReactTooltip from 'react-tooltip';
 import { Link } from 'react-router-dom';
 
+import './map.sass';
 
 
 class Map extends React.Component {
@@ -14,56 +15,54 @@ class Map extends React.Component {
         const {points} = this.props;
         const geoUrl = require('./map.json');
         return (
-
-            <div>
-            <ComposableMap
-            projection={'geoMercator'}
-            width={980}
-            height={500}
-            style={{
-                width: "100%",
-                height: "auto"
-            }}
-            >
-            <ZoomableGroup center={[0, 0]} disablePanning>
-                <Geographies geography={geoUrl}>
-                {({ geographies }) =>
-                    geographies.map(geography => (
-                        <Geography
-                        key={geography.rsmKey}
-                        geography={geography}
-                        style={{
-                            default: {
-                                fill: "#DDD",
-                                outline: "none",
-                                stroke: "#FFF"
-                            },
-                            hover: {
-                                fill: "#DDD",
-                                outline: "none",
-                                stroke: "#FFF"
-                            },
-                            pressed: {
-                                fill: "#DDD",
-                                outline: "none",
-                                stroke: "#FFF"
-                            }
-                        }}
-                        />
-                        ))
-                    }
-                </Geographies>
-                {points.map(({ slug, label, repaired, latitude, longitude }) => (
-                    <Link to={`/point/${slug}`} key={`${label}_link`}>
-                        <Marker   key={label} coordinates={[longitude,latitude]}> 
-                            <circle data-tip={label} r={10} fill={(repaired != "1") ? '#F00': '#0F0'} />
-
-                        </Marker>
-                    </Link>
-                ))}
-            </ZoomableGroup>
-            </ComposableMap>
-            <ReactTooltip />
+            <div className="map-area">
+              <ComposableMap
+                projection={'geoMercator'}
+                width={980}
+                height={450}
+                style={{
+                    width: "100%",
+                    height: "auto"
+                }}
+              >
+                <ZoomableGroup center={[0, 20]} disablePanning>
+                    <Geographies geography={geoUrl}>
+                    {({ geographies }) =>
+                        geographies.map(geography => (
+                            <Geography
+                            key={geography.rsmKey}
+                            geography={geography}
+                            style={{
+                                default: {
+                                    fill: "#f3f4f6",
+                                    outline: "none",
+                                    stroke: "#f3f4f6"
+                                },
+                                hover: {
+                                    fill: "#f3f4f6",
+                                    outline: "none",
+                                    stroke: "#f3f4f6"
+                                },
+                                pressed: {
+                                    fill: "#f3f4f6",
+                                    outline: "none",
+                                    stroke: "#f3f4f6"
+                                }
+                            }}
+                            />
+                            ))
+                        }
+                    </Geographies>
+                    {points.map(({ slug, label, repaired, latitude, longitude }) => (
+                        <Link to={`/point/${slug}`} key={`${label}_link`}>
+                            <Marker key={label} coordinates={[longitude,latitude]}>
+                                <circle data-tip={label} r={10} fill={(repaired != "1") ? '#ba322c': '#1d4431'} />
+                            </Marker>
+                        </Link>
+                    ))}
+                </ZoomableGroup>
+              </ComposableMap>
+              <ReactTooltip />
             </div>
         )
     };
