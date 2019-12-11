@@ -52,7 +52,6 @@ class PasswordInput extends Component {
       url: target,
       data: qs.stringify(data)
     }).then(res => {
-      console.log(res.data);
       this.setState({
         isSending: false
       });
@@ -80,7 +79,7 @@ class PasswordInput extends Component {
     return (
       <form className="password-area" onSubmit={this.handleSubmit}>
         <label>
-          Password :
+          <span>Password :</span>
           <input type="text" name="name" onChange={this.handleChange} />
         </label>
         <input type="submit" value="Submit" />

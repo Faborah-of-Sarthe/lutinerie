@@ -1,33 +1,92 @@
 import React, { Component } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faLock, faLockOpen } from '@fortawesome/free-solid-svg-icons'
 
 import './receiver.sass';
+import { matcherHint } from 'jest-matcher-utils';
+import PasswordInput from '../PasswordInput';
 
 class Receiver extends Component {
+    state = {
+        color: 'rgba(255,0,50,1)',
+        display: 'none',
+        found: false,
+    }
     constructor() {
         super();
         const url = new URL(process.env.REACT_APP_MERCURE_HUB);
         url.searchParams.append('topic', process.env.REACT_APP_MERCURE_DETECTOR_TOPIC);
-        const eventSource = new EventSource(url);
+        this.eventSource = new EventSource(url);
         
-        eventSource.onmessage = (e) => {
-            this.displayColor(e.data);
+        this.eventSource.onmessage = (e) => {
+            const data = JSON.parse(e.data)
+
+            if(data.type == 'coords'){
+                this.displayColor(data);
+            } else if (data.type == 'win') {
+                this.setState({
+                    found: true,
+                    display: 'none',
+                })
+                this.eventSource.close();
+            }
         };
 
-        this.color = "rgba(0,0,0,1)";
+    }
+
+    componentWillUnmount(){
+        this.eventSource.close();
     }
 
     displayColor = (data) => {
-        console.log(data);
-        data.r = 255;
-        data.g = 0;
-        data.b = 0;
-        this.color = "rgb("+data.r+","+data.g+","+data.b+")";
+        
+        data.r = data.redColor;
+        data.g = data.greenColor;
+        data.b = 50;
+        const display = data.display
+
+        this.setState({
+            color: `rgb(${data.r},${data.g},${data.b})`,
+            display
+        }) 
     }
             
 
     render(){
+        const {color, display, found} = this.state;
         return (
-            <div className="screen" style={{ backgroundColor: this.color }}></div>
+            <div className="receiver-page full-machine">
+                <div className="machine">
+                    <div className={"top " + ( found ? 'found' : '' )}>
+                        <div className="leds">
+                            <div className="led"></div>
+                            <div className="led"></div>
+                        </div>
+                        <div className="title">
+                            TREASURE 72800
+                        </div>
+                    </div>
+                    <div className="screen" style={{ backgroundColor: color }}>
+                        <div className="dot" style={{display:display}}></div>
+                        { found && <p>Trouvé !</p>}
+                    </div>
+                    <div className="entre">
+
+                    </div>
+                    <div className="bottom">
+                        <div className="lock">
+                            { !found && <FontAwesomeIcon icon={ faLock} />}
+                            { found && <FontAwesomeIcon icon={ faLockOpen} />}
+                        </div>
+                    </div>
+                </div>
+                <div className={"drawer" + (found ? ' open' : '')}>
+                    <div className="drawer-body">
+                        <PasswordInput slug={this.props.slug} />
+                    </div>
+                    <div className="drawer-front"></div>
+                </div>
+            </div>  
         )
     }
 }

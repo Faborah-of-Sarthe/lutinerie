@@ -44,8 +44,8 @@ class PointPage extends Component {
         { (this.slug == 'saragossa' || this.slug == 'sahara') &&
           <PasswordInput slug={ this.slug } key={ this.slug } />
         }
-        { this.slug == 'sartrouville' && bureau == BUREAU_1 && <Detector />}
-        { this.slug == 'sartrouville' && bureau == BUREAU_2 && <Receiver />}
+        { this.slug == 'sartrouville' && bureau == BUREAU_1 && <Detector slug={this.slug} />}
+        { this.slug == 'sartrouville' && bureau == BUREAU_2 && <Receiver slug={this.slug} />}
       </div>
     );
   }
