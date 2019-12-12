@@ -9,11 +9,22 @@ class Detector extends Component {
         left: Math.round(Math.random() *90),
         top: Math.round(Math.random() *90),
         display: 'none',
-        gameFinished: false
+        gameFinished: false,
+        password: 'Point déverrouillé',
     }
 
     componentDidMount(){
-        document.addEventListener('mousemove', this.sendPosition);
+        const { point } = this.props;
+
+        if(point.repaired == 0) {
+            document.addEventListener('mousemove', this.sendPosition);
+        }
+        else {
+            this.setState({
+                gameFinished: true
+            })
+        }
+        
         this.setState({
             flowers: this.getFlowers(),
             grass: this.getGrass(),

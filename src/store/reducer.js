@@ -75,6 +75,8 @@ export const setBureau = (bureau) => ({
  * Selectors
  */
 
+ export const getPoint = (state, slug) => state.points.find(point => point.slug == slug);
+
 /**
  * Export
  */

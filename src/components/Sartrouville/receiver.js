@@ -3,7 +3,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLock, faLockOpen } from '@fortawesome/free-solid-svg-icons'
 
 import './receiver.sass';
-import { matcherHint } from 'jest-matcher-utils';
 import PasswordInput from '../PasswordInput';
 
 class Receiver extends Component {
@@ -12,8 +11,30 @@ class Receiver extends Component {
         display: 'none',
         found: false,
     }
-    constructor() {
-        super();
+
+
+    componentDidMount() {
+        const { point } = this.props;
+        this.eventSource = '';
+
+        if(point.repaired == 0) {
+            this.listenCoords();
+        } else {
+            this.setState({
+                found:true, 
+                color: '#25ec25'
+            })
+        }
+    }
+
+    componentWillUnmount(){
+        console.log(typeof this.eventSource);
+        
+        if(typeof this.eventSource !== 'string') {
+            this.eventSource.close();
+        }
+    }
+    listenCoords = () => {
         const url = new URL(process.env.REACT_APP_MERCURE_HUB);
         url.searchParams.append('topic', process.env.REACT_APP_MERCURE_DETECTOR_TOPIC);
         this.eventSource = new EventSource(url);
@@ -31,13 +52,7 @@ class Receiver extends Component {
                 this.eventSource.close();
             }
         };
-
     }
-
-    componentWillUnmount(){
-        this.eventSource.close();
-    }
-
     displayColor = (data) => {
         
         data.r = data.redColor;

@@ -16,11 +16,16 @@ import { setBureau } from '../../store/reducer';
 
 
 class App extends Component {
-
+    state = {
+        loading: true
+    }
     componentDidMount(){
         axios.get(`${process.env.REACT_APP_BACK_URL}getPoints.php`)
         .then((response) => {
             store.dispatch(updatePoints(response.data));
+            this.setState({
+                loading:false
+            })
         })
         .catch((error) => {
           alert(error);
@@ -34,10 +39,11 @@ class App extends Component {
     }
     render() {
         const {bureau} = this.props;
+        const {loading} = this.state;
 
         return (
             <BrowserRouter>
-                <main>
+               { !loading && <main>
                     <ToastContainer autoClose={4000} />
                     <Switch>
                     <Route exact path="/">
@@ -56,7 +62,7 @@ class App extends Component {
                         <Error />
                     </Route>
                     </Switch>
-                </main>
+                </main> }
             </BrowserRouter>
         )
     }

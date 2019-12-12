@@ -2,8 +2,10 @@ import { connect } from 'react-redux';
 
 
 import Receiver from 'src/components/Sartrouville/receiver';
+import { getPoint } from '../../store/reducer';
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state, ownProps) => ({
+  point: getPoint(state, ownProps.slug),
 });
 
 const mapDispatchToProps = (dispatch) => ({
