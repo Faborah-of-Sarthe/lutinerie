@@ -82,7 +82,7 @@ class PasswordInput extends Component {
           <span>Password :</span>
           <input type="text" name="name" onChange={this.handleChange} />
         </label>
-        <input type="submit" value="Submit" />
+        <input type="submit" value="Valider" />
       </form>
     );
   }
