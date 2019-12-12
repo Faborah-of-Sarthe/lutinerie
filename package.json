@@ -64,6 +64,7 @@
     "react": "*",
     "react-dom": "*",
     "react-redux": "*",
+    "react-redux-toastr": "^7.6.4",
     "react-router-dom": "^5.1.2",
     "react-scripts": "^3.3.0",
     "react-simple-maps": "^1.0.0-beta.0",

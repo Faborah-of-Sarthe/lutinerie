@@ -1,8 +1,8 @@
 /*
  * Npm import
  */
-import { createStore, compose, applyMiddleware } from 'redux';
-
+import { createStore, compose, applyMiddleware, combineReducers } from 'redux';
+import {reducer as toastrReducer} from 'react-redux-toastr'
 /*
 * Local import
 */
@@ -26,8 +26,16 @@ const enhancers = composeEnhancers(
 //   devTools.push(window.devToolsExtension());
 // }
 
+const reducers = {
+  app: reducer,
+  toastr: toastrReducer
+}
+const initialStates = {
+  app: initialState
+}
+const combinedReducers = combineReducers(reducers);
 // createStore
-const store = createStore(reducer, initialState, enhancers);
+const store = createStore(combinedReducers, initialStates, enhancers);
 
 store.dispatch(mercurePoints());
 

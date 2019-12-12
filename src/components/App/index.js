@@ -5,8 +5,7 @@ import axios from 'axios';
 import Cookies from 'universal-cookie';
 import store  from 'src/store';
 import { updatePoints } from 'src/store/reducer';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import ReduxToastr from 'react-redux-toastr'
 
 
 import Welcome from 'src/containers/Welcome';
@@ -44,7 +43,8 @@ class App extends Component {
         return (
             <BrowserRouter>
                { !loading && <main>
-                    <ToastContainer autoClose={4000} />
+                    {/* <ToastContainer autoClose={4000} /> */}
+                    <ReduxToastr />
                     <Switch>
                     <Route exact path="/">
                         { !bureau && <Welcome /> }

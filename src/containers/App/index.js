@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import App from 'src/components/App';
 
 const mapStateToProps = (state) => ({
-  bureau: state.bureau
+  bureau: state.app.bureau
 });
 
 const mapDispatchToProps = {};

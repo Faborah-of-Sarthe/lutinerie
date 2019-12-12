@@ -1,4 +1,5 @@
-import { MERCURE_POINTS, updatePoints } from 'src/store/reducer';
+import { MERCURE_POINTS, updatePoint } from 'src/store/reducer';
+import {toastr} from 'react-redux-toastr'
 
 const mercureMiddleware = (store) => (next) => (action) => {
     switch (action.type) {
@@ -9,7 +10,9 @@ const mercureMiddleware = (store) => (next) => (action) => {
             const eventSource = new EventSource(url);
             
             eventSource.onmessage = (e) => {
-                store.dispatch(updatePoints(e.data));
+                const point = (typeof e.data == 'string') ? JSON.parse(e.data) : e.data; 
+                store.dispatch(updatePoint(point.slug));
+                toastr.success('Point déverrouillé !', `Le point ${point.label} a été déverrouillé !`);
             };
             
         break;

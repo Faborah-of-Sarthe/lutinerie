@@ -8,7 +8,6 @@ import { BUREAU_1, BUREAU_2 } from 'src/store/reducer';
 import Detector from 'src/containers/Sartrouville/detector';
 import Receiver from 'src/containers/Sartrouville/receiver';
 
-/* import PropTypes from 'prop-types'; */
 
 /**
  * Local import
@@ -32,7 +31,8 @@ class PointPage extends Component {
   }
 
   render() {
-    const { bureau } = this.store.getState();
+    const { bureau } = this.store.getState().app;
+    
     
     return (
       <div className="pointpage">
