@@ -22,6 +22,7 @@ import StPetersburgCoords from '../StPetersburgCoords';
 import Levels from '../Levels';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretLeft, faInfoCircle } from '@fortawesome/free-solid-svg-icons'
+import { getPoint } from '../../store/reducer';
 /**
  * Code
  */
@@ -29,19 +30,20 @@ class PointPage extends Component {
   constructor({ slug, store }) {
     super();
     // const { store } = this.props;
-    this.store = store;    
+    this.store = store;   
+    
     this.slug = slug;
   }
-
+  
   render() {
     const { bureau } = this.store.getState().app;
-    
+    const point = getPoint(this.store.getState().app, this.slug);
     
     return (
       <div className="pointpage">
         <header>
           <Link to={`/`}><FontAwesomeIcon icon={ faCaretLeft } /> Retour</Link>
-          <h1 className="slug">{ this.slug }</h1>
+          <h1 className="slug">{ point.label }</h1>
           <div className="indice"><FontAwesomeIcon icon={ faInfoCircle } /></div>
         </header>
         { (this.slug == 'saopaulo') &&
