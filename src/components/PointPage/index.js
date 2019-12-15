@@ -4,6 +4,7 @@
  */
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+
 import { BUREAU_1, BUREAU_2 } from 'src/store/reducer';
 import Detector from 'src/containers/Sartrouville/detector';
 import Receiver from 'src/containers/Sartrouville/receiver';
@@ -19,7 +20,8 @@ import Receiver from 'src/containers/Sartrouville/receiver';
 import PasswordInput from '../PasswordInput';
 import StPetersburgCoords from '../StPetersburgCoords';
 import Levels from '../Levels';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCaretLeft, faInfoCircle } from '@fortawesome/free-solid-svg-icons'
 /**
  * Code
  */
@@ -37,8 +39,11 @@ class PointPage extends Component {
     
     return (
       <div className="pointpage">
-        <Link to={`/`}>Retour</Link>
-        <h1 className="slug">{ this.slug }</h1>
+        <header>
+          <Link to={`/`}><FontAwesomeIcon icon={ faCaretLeft } /> Retour</Link>
+          <h1 className="slug">{ this.slug }</h1>
+          <div className="indice"><FontAwesomeIcon icon={ faInfoCircle } /></div>
+        </header>
         { (this.slug == 'saopaulo') &&
           <Levels slug={ this.slug } key={ this.slug } />
         }
