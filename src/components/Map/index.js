@@ -54,8 +54,8 @@ class Map extends React.Component {
                         }
                     </Geographies>
                     {points.map(({ slug, label, repaired, latitude, longitude }) => (
-                        <Link to={`/point/${slug}`} key={`${label}_link`}>
-                            <Marker key={label} coordinates={[longitude,latitude]}>
+                        <Link to={`/point/${slug}`} key={`${slug}_link`}>
+                            <Marker key={slug} coordinates={[longitude,latitude]}>
                                 <circle data-tip={label} r={10} fill={(repaired != "1") ? '#ba322c': '#1d4431'} />
                             </Marker>
                         </Link>
