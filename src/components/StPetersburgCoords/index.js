@@ -62,24 +62,26 @@ class StPetersburgCoords extends Component {
 
   render() {
     return (
-      <form className="password-area" onSubmit={this.handleSubmit}>
-        <div className="dms-line">
-          <label>
-            Nord :
-            <input type="text" name="nd" onChange={this.handleChange} className={this.state['nd'] == true ? 'valid' : 'error'} /><span>°</span>
-            <input type="text" name="nm" onChange={this.handleChange} className={this.state['nm'] == true ? 'valid' : 'error'} /><span>&prime;</span>
-            <input type="text" name="ns" onChange={this.handleChange} className={this.state['ns'] == true ? 'valid' : 'error'} /><span>&prime;&prime;</span>
-          </label>
-        </div>
-        <div className="dms-line">
-          <label>
-            &nbsp;&nbsp;Est&nbsp;:&nbsp;
-            <input type="text" name="ed" onChange={this.handleChange} className={this.state['ed'] == true ? 'valid' : 'error'} /><span>°</span>
-            <input type="text" name="em" onChange={this.handleChange} className={this.state['em'] == true ? 'valid' : 'error'} /><span>&prime;</span>
-            <input type="text" name="es" onChange={this.handleChange} className={this.state['es'] == true ? 'valid' : 'error'} /><span>&prime;&prime;</span>
-          </label>
-        </div>
-      </form>
+      <div className="page-petersburg">
+        <form className="password-area" onSubmit={this.handleSubmit}>
+          <div className="dms-line">
+            <label>
+              Nord :
+              <input type="text" name="nd" onChange={this.handleChange} className={this.state['nd'] == true ? 'valid' : 'error'} /><span>°</span>
+              <input type="text" name="nm" onChange={this.handleChange} className={this.state['nm'] == true ? 'valid' : 'error'} /><span>&prime;</span>
+              <input type="text" name="ns" onChange={this.handleChange} className={this.state['ns'] == true ? 'valid' : 'error'} /><span>&prime;&prime;</span>
+            </label>
+          </div>
+          <div className="dms-line">
+            <label>
+              &nbsp;&nbsp;Est&nbsp;:&nbsp;
+              <input type="text" name="ed" onChange={this.handleChange} className={this.state['ed'] == true ? 'valid' : 'error'} /><span>°</span>
+              <input type="text" name="em" onChange={this.handleChange} className={this.state['em'] == true ? 'valid' : 'error'} /><span>&prime;</span>
+              <input type="text" name="es" onChange={this.handleChange} className={this.state['es'] == true ? 'valid' : 'error'} /><span>&prime;&prime;</span>
+            </label>
+          </div>
+        </form>
+      </div>
     );
   }
 }

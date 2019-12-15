@@ -1,0 +1,43 @@
+@import './src/styles/_vars.sass';
+
+
+.password-area
+    background: #333333
+    max-width: 40rem
+    padding-top: 2rem
+    border-radius: 5px
+    margin: 0 auto
+    text-align: center
+    .intro
+        text-align: center
+        font-size: 2.3rem
+        color: #555
+        padding: 0 0 2rem
+    .intro::after
+        display: block
+        content: ""
+        height: 2rem
+        margin-top: 1rem
+        background: repeating-linear-gradient(45deg, #555,#555 10px,#444 10px,#444 20px)
+    .password-body 
+        padding: 2rem
+    label > span 
+        font-size: 1.7rem
+        display: block
+        color: #5e5e5e
+        text-align: center
+        margin-bottom: 1rem
+    .check-btn
+        margin-top: 1rem
+
+    input[type=text]
+        background: #222
+        border: 3px solid #404040 
+        font-size: 1.5rem
+        padding: 1rem
+        height: 4rem
+        color: $white
+        font-family: 'Solway', serif
+        display: block
+        width: 100%
+        text-align: center
