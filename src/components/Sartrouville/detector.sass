@@ -1,0 +1,36 @@
+@import './src/styles/_vars.sass';
+
+.detector-page 
+    .tresor
+        width: 70px
+        height: 70px
+        position: absolute
+
+    .game 
+        position: relative
+        height: 80vh
+        display: flex
+        align-items: center
+        justify-content: center
+        background-color: $lgreen
+        overflow: hidden
+        cursor: url('img/detect.svg'), pointer
+    .flower
+        position: absolute
+        width: 2em
+    .grass
+        position: absolute
+        width: 2em
+    .password
+        background: #d2d2ab
+        color: darken(#d2d2ab, 50%)
+        font-weight: bold
+        font-size: 2rem
+        padding: 1rem
+        font-family: monospace
+        z-index: 2
+        transform: translateY(100rem)
+        transition: transform .5s ease
+    .password.found
+        transform: translateY(0)
+        transition: transform .5s ease

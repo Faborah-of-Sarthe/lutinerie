@@ -4,7 +4,8 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import axios from 'axios';
-import { toast } from 'react-toastify';
+import {toastr} from 'react-redux-toastr'
+
 /* import PropTypes from 'prop-types'; */
 
 /**
@@ -27,7 +28,6 @@ class PasswordInput extends Component {
   }
 
   handleChange(event) {
-    console.log(event.target.value);
     this.setState({input: event.target.value});
   }
   handleSubmit(event) {
@@ -37,9 +37,8 @@ class PasswordInput extends Component {
       password: this.state.input
     }
 
-    this.toastId = null;
-    this.toastId = toast("Envoi en cours", { autoClose: false });
-    this.setState({ isSending: true });
+    toastr.info('Envoi en cours', { timeOut: 1500});
+    this.setState({ isSending: true});
     setTimeout(() => { this.sendDataToBack(data) }, 2000);
   }
 
@@ -52,23 +51,13 @@ class PasswordInput extends Component {
       url: target,
       data: qs.stringify(data)
     }).then(res => {
-      console.log(res.data);
       this.setState({
         isSending: false
       });
       if (res.data.status == 1) {
-        toast.update(this.toastId, {
-          render: res.data.message,
-          type: toast.TYPE.SUCCESS,
-          autoClose: 4000
-        });
         setTimeout(() => { this.props.history.push("/") }, 1000);
       } else if (res.data.message){
-        toast.update(this.toastId, {
-          render: res.data.message,
-          type: toast.TYPE.ERROR,
-          autoClose: 4000
-        });
+        toastr.error(res.data.message);
       }
     })
     .catch(function (error) {
@@ -77,13 +66,14 @@ class PasswordInput extends Component {
   }
 
   render() {
+    const {input} = this.state;
     return (
       <form className="password-area" onSubmit={this.handleSubmit}>
         <label>
-          Password :
-          <input type="text" name="name" onChange={this.handleChange} />
+          <span>Password :</span>
+          <input type="text" name="name" value={input} onChange={this.handleChange} />
         </label>
-        <input type="submit" value="Submit" />
+        <input type="submit" value="Valider" />
       </form>
     );
   }

@@ -1,0 +1,120 @@
+@import './src/styles/_vars.sass';
+body
+    background: dgreen
+.screen
+    height: 10rem
+    max-width: 40rem
+    display: flex
+    align-items: center
+    justify-content: center
+    margin: 0 auto
+    border: 1rem #333 solid
+    p
+        text-transform: uppercase
+        color: $dgreen
+        font-weight: bold
+        font-size: 2rem
+        opacity: .3
+        
+.drawer
+    transform: translateY(calc( -100% + 2.1rem ))
+    z-index: -1
+    transition: transform 2s linear
+.drawer.open
+    transform: translateY(0)
+.drawer-front
+    background: #444
+    max-width: 40rem
+    margin: 0 auto
+    height: 2rem
+.drawer-body
+    height: 15rem
+    background: #333
+    max-width: 38rem
+    margin: 0 auto
+.machine
+    background-color: #555
+    max-width: 40rem
+    margin: 0 auto
+    padding: 2rem
+    z-index: 2
+    position: relative
+    
+    .top
+        display: flex
+        margin-bottom: 2rem
+        justify-content: space-between
+        align-items: center
+        .title
+            font-size: 1.7rem
+            font-weight: bold
+            color: #999
+    .leds 
+        display: flex
+    .led
+        width: 2rem
+        height: 2rem
+        background: #333
+        border-radius: 50%
+        margin-right: 0.5rem
+        transition: background ease
+        animation: blink 1.5s infinite
+    .led:nth-child(odd)
+        animation-delay: .3s
+    .found .led 
+        background: #25ec25
+        animation: none
+    .entre
+        border-left: 2rem solid #333
+        border-right: 2rem solid #333
+        background: #444
+        height: 4rem
+
+        margin-top: 1rem
+        background-image: radial-gradient(#555 20%, transparent 20%), radial-gradient(#484848 20%, transparent 20%)
+        background-position: 0 0
+        background-position: 0 0, 10px 10px
+        background-size: 20px 20px    
+    .lock
+        padding: 2rem
+        text-align: center
+        font-size: 3rem
+        color: #333
+.dot
+    width: 100px
+    height: 100px
+    background: #000
+    opacity: 0.2
+   
+    border-radius: 50%
+
+.receiver-page
+    .password-area
+        margin: 0 auto
+        display: flex
+        justify-content: center
+        align-items: center
+        height: 100%
+        span
+            display: none
+    input[type=text]
+        background: #222
+        border: 3px solid #404040 
+        font-size: 1.5rem
+        padding: 1rem
+        height: 4rem
+        color: $white
+        font-family: 'Solway', serif
+    input[type=submit]
+        height: 4rem
+        background: $lgreen
+        border: none
+        color: $dgreen
+        font-weight: bold
+
+@keyframes blink 
+    0,100%
+        background: #333333
+    
+    5%
+       background: red

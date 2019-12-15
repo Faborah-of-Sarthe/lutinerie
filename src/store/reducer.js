@@ -6,7 +6,6 @@ export const initialState = {
   points: [],
   bureau: '',
 };
-
 /**
  * Types
  */
@@ -15,6 +14,9 @@ const DO_SOMETHING = 'DO_SOMETHING';
 export const MERCURE_POINTS = 'MERCURE_POINTS';
 export const SET_BUREAU = 'SET_BUREAU';
 const UPDATE_POINTS = 'UPDATE_POINTS';
+const UPDATE_POINT = 'UPDATE_POINT';
+export const BUREAU_1 = 'sarthe';
+export const BUREAU_2 = 'savoie';
 
 /**
  * Traitements
@@ -31,6 +33,22 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         points: [...points],
       };
+    case UPDATE_POINT: 
+      const slug =  action.slug;   
+      let newPoints = state.points.map(point => {
+        
+        if(point.slug == slug) {
+          point.repaired = "1";
+        }
+        return point;
+
+      })
+      
+      return {
+        ...state,
+        points: [...newPoints],
+      };
+      
     case SET_BUREAU: 
       let cookie = new Cookies;
       let d = new Date().getTime() + (60 * 60 * 24 * 1000)
@@ -58,6 +76,11 @@ export const updatePoints = (points) => ({
   points,
 });
 
+export const updatePoint = (slug) => ({
+  type: UPDATE_POINT,
+  slug,
+});
+
 
 
 export const mercurePoints = () => ({
@@ -72,6 +95,8 @@ export const setBureau = (bureau) => ({
 /**
  * Selectors
  */
+
+ export const getPoint = (state, slug) => state.points.find(point => point.slug == slug);
 
 /**
  * Export

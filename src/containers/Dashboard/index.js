@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import Dashboard from 'src/components/Dashboard';
 
 const mapStateToProps = (state) => ({
-  points: state.points,
+  points: state.app.points,
 });
 
 const mapDispatchToProps = {};

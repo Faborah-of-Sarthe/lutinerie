@@ -5,8 +5,7 @@ import axios from 'axios';
 import Cookies from 'universal-cookie';
 import store  from 'src/store';
 import { updatePoints } from 'src/store/reducer';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import ReduxToastr from 'react-redux-toastr'
 
 
 import Welcome from 'src/containers/Welcome';
@@ -16,11 +15,16 @@ import { setBureau } from '../../store/reducer';
 
 
 class App extends Component {
-
+    state = {
+        loading: true
+    }
     componentDidMount(){
         axios.get(`${process.env.REACT_APP_BACK_URL}getPoints.php`)
         .then((response) => {
             store.dispatch(updatePoints(response.data));
+            this.setState({
+                loading:false
+            })
         })
         .catch((error) => {
           alert(error);
@@ -34,12 +38,13 @@ class App extends Component {
     }
     render() {
         const {bureau} = this.props;
-        console.log(bureau);
+        const {loading} = this.state;
 
         return (
             <BrowserRouter>
-                <main>
-                    <ToastContainer autoClose={4000} />
+               { !loading && <main>
+                    {/* <ToastContainer autoClose={4000} /> */}
+                    <ReduxToastr />
                     <Switch>
                     <Route exact path="/">
                         { !bureau && <Welcome /> }
@@ -50,14 +55,14 @@ class App extends Component {
                         path="/point/:id"
                         render={({history, match, location}) => {
                         const { id } = match.params;
-                        return <PointPage slug={id} />
+                        return <PointPage slug={id} store={store} />
                         }}
                     />
                     <Route>
                         <Error />
                     </Route>
                     </Switch>
-                </main>
+                </main> }
             </BrowserRouter>
         )
     }
