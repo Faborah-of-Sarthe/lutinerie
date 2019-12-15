@@ -13,6 +13,7 @@ import {toastr} from 'react-redux-toastr'
  */
 // Styles et assets
 import './passinput.sass';
+import { sendDataToBack } from '../../lib/dataSend';
 
 /**
  * Code
@@ -24,7 +25,6 @@ class PasswordInput extends Component {
     this.state = {isSending: false, input: ''};
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.sendDataToBack = this.sendDataToBack.bind(this);
   }
 
   handleChange(event) {
@@ -37,33 +37,9 @@ class PasswordInput extends Component {
       password: this.state.input
     }
 
-    toastr.info('Envoi en cours', { timeOut: 1500});
-    this.setState({ isSending: true});
-    setTimeout(() => { this.sendDataToBack(data) }, 2000);
+    sendDataToBack(data, `${process.env.REACT_APP_BACK_URL}checkPasswords.php`);
   }
 
-  sendDataToBack(data) {
-    const target = `${process.env.REACT_APP_BACK_URL}checkPasswords.php`;
-    const qs = require('qs');
-
-    axios({
-      method: 'post',
-      url: target,
-      data: qs.stringify(data)
-    }).then(res => {
-      this.setState({
-        isSending: false
-      });
-      if (res.data.status == 1) {
-        setTimeout(() => { this.props.history.push("/") }, 1000);
-      } else if (res.data.message){
-        toastr.error(res.data.message);
-      }
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
-  }
 
   render() {
     const {input} = this.state;
