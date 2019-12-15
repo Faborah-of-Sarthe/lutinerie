@@ -60,3 +60,15 @@ function registerPointRepairment($pointId) {
       'content' => $postData,
   ]]));
 }
+
+function resetAllReparations() {
+  // 1 - enregistrement BDD
+  $db = connectToDB();
+  try {
+    $query = $db->prepare("UPDATE points SET repaired = 0");
+    $query->execute();
+    echo 'done';
+  } catch (\Exception $e) {
+    dd($e->getMessage());
+  }
+}
