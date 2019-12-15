@@ -1,0 +1,35 @@
+@import ../../styles/vars
+
+.level-box
+  padding: 1em
+  font-size: 2em
+  margin: 1em
+  text-align: center
+
+.btn
+  background: $white
+  color: $dred
+  box-shadow: .1em .1em $dgreen
+  cursor: pointer
+  &.up
+    margin-bottom: .5em
+  &.down
+    margin-top: .5em
+
+.tracks
+  height: 6em
+  width: 1em
+  background: $white
+  box-shadow: .1em 0 $dgreen
+  position: relative
+
+.level-stick
+  height: 1.5em
+  width: 1.5em
+  text-indent: -20000px
+  overflow: hidden
+  border-radius: 50%
+  background: $lred
+  box-shadow: 0 .3em 0 .05em $dredopacity
+  position: absolute
+  left: -.25em

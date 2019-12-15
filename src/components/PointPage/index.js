@@ -16,6 +16,7 @@ import { Link } from 'react-router-dom';
 /* import './app.sass'; */
 import PasswordInput from '../PasswordInput';
 import StPetersburgCoords from '../StPetersburgCoords';
+import Levels from '../Levels';
 
 /**
  * Code
@@ -31,6 +32,9 @@ class PointPage extends Component {
       <div className="pointpage">
         <Link to={`/`}>Retour</Link>
         <h1 className="slug">{ this.slug }</h1>
+        { (this.slug == 'saopaulo') &&
+          <Levels slug={ this.slug } key={ this.slug } />
+        }
         { (this.slug == 'stpetersbourg') &&
           <StPetersburgCoords slug={ this.slug } key={ this.slug } />
         }
