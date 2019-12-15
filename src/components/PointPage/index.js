@@ -18,6 +18,7 @@ import Receiver from 'src/containers/Sartrouville/receiver';
 /* import './app.sass'; */
 import PasswordInput from '../PasswordInput';
 import StPetersburgCoords from '../StPetersburgCoords';
+import CruelPanel from '../CruelPanel';
 import Levels from '../Levels';
 
 /**
@@ -41,6 +42,9 @@ class PointPage extends Component {
         <h1 className="slug">{ this.slug }</h1>
         { (this.slug == 'saopaulo') &&
           <Levels slug={ this.slug } key={ this.slug } />
+        }
+        { (this.slug == 'sacramento') &&
+          <CruelPanel slug={ this.slug } key={ this.slug } />
         }
         { (this.slug == 'stpetersbourg') &&
           <StPetersburgCoords slug={ this.slug } key={ this.slug } />
