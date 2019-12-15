@@ -55,9 +55,15 @@ class Map extends React.Component {
                     </Geographies>
                     {points.map(({ slug, label, repaired, latitude, longitude }) => (
                         <Link to={`/point/${slug}`} key={`${slug}_link`}>
+                          { (slug == 'stpetersbourg' && repaired != "1") ? (
+                            <Marker key={slug} coordinates={[74,50]}>
+                                <circle data-tip={label} r={10} fill={(repaired != "1") ? '#ba322c': '#1d4431'} />
+                            </Marker>
+                          ) : (
                             <Marker key={slug} coordinates={[longitude,latitude]}>
                                 <circle data-tip={label} r={10} fill={(repaired != "1") ? '#ba322c': '#1d4431'} />
                             </Marker>
+                          ) }
                         </Link>
                     ))}
                 </ZoomableGroup>

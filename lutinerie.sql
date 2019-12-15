@@ -39,7 +39,7 @@ CREATE TABLE `points` (
 
 LOCK TABLES `points` WRITE;
 /*!40000 ALTER TABLE `points` DISABLE KEYS */;
-INSERT INTO `points` VALUES ('sacramento','Sacramento',0,38.57576400,-121.47885100,NULL),('sahara','Sahara',0,23.80607800,11.28845200,'desert'),('saidpur','Saidpur',0,25.77852200,88.89737700,NULL),('saopaulo','Sao Paulo',0,-23.53377300,-46.62529000,NULL),('saragossa','Saragosse',1,41.64969300,-0.88771200,'tolepa'),('sartrouville','Sartrouville',0,48.93719900,2.16440000,NULL),('stpetersbourg','Saint Petersbourg',1,59.97666500,30.32083300,'DMS');
+INSERT INTO `points` VALUES ('sacramento','Sacramento',0,38.57576400,-121.47885100,'plat'),('sahara','Sahara',0,23.80607800,11.28845200,'décrocher'),('saidpur','Saidpur',0,25.77852200,88.89737700,'instrument'),('saopaulo','Sao Paulo',0,-23.53377300,-46.62529000,'2230'),('saragossa','Saragosse',0,41.64969300,-0.88771200,'gobelet'),('sartrouville','Sartrouville',0,48.93719900,2.16440000,'argent'),('stpetersbourg','Saint Petersbourg',0,59.97666500,30.32083300,'DMS');
 /*!40000 ALTER TABLE `points` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -52,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-12-09 21:34:36
+-- Dump completed on 2019-12-15 16:02:10
