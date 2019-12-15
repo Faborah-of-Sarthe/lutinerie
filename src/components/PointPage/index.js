@@ -53,7 +53,7 @@ class PointPage extends Component {
           <StPetersburgCoords slug={ this.slug } key={ this.slug } />
         }
         { (this.slug == 'saragossa' || this.slug == 'sahara') &&
-          <PasswordInput slug={ this.slug } key={ this.slug } />
+          <PasswordInput slug={ this.slug } repaired={ point.repaired } key={ this.slug } />
         }
         { this.slug == 'sartrouville' && bureau == BUREAU_1 && <Detector slug={this.slug} />}
         { this.slug == 'sartrouville' && bureau == BUREAU_2 && <Receiver slug={this.slug} />}

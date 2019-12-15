@@ -27,6 +27,9 @@ class PasswordInput extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  componentDidMount() {
+    this.nameInput.focus();
+  }
   handleChange(event) {
     this.setState({input: event.target.value});
   }
@@ -43,13 +46,17 @@ class PasswordInput extends Component {
 
   render() {
     const {input} = this.state;
+    const {repaired} = this.props;
     return (
       <form className="password-area" onSubmit={this.handleSubmit}>
-        <label>
-          <span>Password :</span>
-          <input type="text" name="name" value={input} onChange={this.handleChange} />
-        </label>
-        <input type="submit" value="Valider" />
+        <p className="intro"> {repaired == '1' ? 'Point déverrouillé !' : 'Point verrouillé'}</p>
+        <div className="password-body">
+          <label htmlFor="name">
+            <span>Veuillez entrer le mot de passe</span>
+            <input type="text" id="name" name="name" value={input} onChange={this.handleChange} ref={(input) => { this.nameInput = input; }}  />
+          </label>
+          <input type="submit" disabled={repaired == '1'} className="check-btn" value="Valider" />
+        </div>
       </form>
     );
   }
