@@ -28,7 +28,6 @@ class PasswordInput extends Component {
   }
 
   handleChange(event) {
-    console.log(event.target.value);
     this.setState({input: event.target.value});
   }
   handleSubmit(event) {
@@ -67,11 +66,12 @@ class PasswordInput extends Component {
   }
 
   render() {
+    const {input} = this.state;
     return (
       <form className="password-area" onSubmit={this.handleSubmit}>
         <label>
           <span>Password :</span>
-          <input type="text" name="name" onChange={this.handleChange} />
+          <input type="text" name="name" value={input} onChange={this.handleChange} />
         </label>
         <input type="submit" value="Valider" />
       </form>

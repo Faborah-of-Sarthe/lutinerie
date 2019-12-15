@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
+import axios from 'axios';
+import Cookies from 'universal-cookie';
 import './detector.sass';
 import flower from './img/flower.svg';
 import grassImg from './img/grass.svg';
-import axios from 'axios';
 
 class Detector extends Component {
     state = {
@@ -20,9 +21,16 @@ class Detector extends Component {
             document.addEventListener('mousemove', this.sendPosition);
         }
         else {
-            this.setState({
-                gameFinished: true
-            })
+            let newState = {
+                gameFinished: true,
+            }
+            let cookie = new Cookies;
+            let password = cookie.get(this.props.slug);
+            if(password) {
+                newState.password = password;
+            }
+
+            this.setState(newState);
         }
         
         this.setState({
@@ -82,6 +90,12 @@ class Detector extends Component {
                 gameFinished: true
 
             });
+
+            let cookie = new Cookies;
+            let d = new Date().getTime() + (60 * 60 * 24 * 1000)
+            d = new Date(d);
+            cookie.set(this.props.slug, res.data,{path: '/', expires: d});
+
             const data = {
                 type: 'win'
             }
