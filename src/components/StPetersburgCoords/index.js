@@ -4,14 +4,13 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 /* import PropTypes from 'prop-types'; */
-import axios from 'axios';
-import { toast } from 'react-toastify';
 
 /**
  * Local import
  */
 // Styles et assets
 import './stpetersburg.sass';
+import { sendDataToBack } from '../../lib/dataSend';
 
 /**
  * Code
@@ -33,17 +32,14 @@ class StPetersburgCoords extends Component {
     }
 
     this.handleChange = this.handleChange.bind(this);
-    this.sendDataToBack = this.sendDataToBack.bind(this);
   }
 
   handleChange(event) {
     if (event.target.value == this.coords[event.target.name]) {
-      console.log('ça matche');
       this.setState({
         [event.target.name]: true
       });
     } else {
-      console.log('ça matche pas');
       this.setState({
         [event.target.name]: false
       });
@@ -51,7 +47,6 @@ class StPetersburgCoords extends Component {
   }
 
   componentDidUpdate = () => {
-    console.log('update');
     if (this.state.nd && this.state.nm && this.state.ns
      && this.state.ed && this.state.em && this.state.es) {
       // WON !!!
@@ -60,45 +55,10 @@ class StPetersburgCoords extends Component {
         password: 'DMS'
       }
 
-      this.toastId = null;
-      this.toastId = toast("Envoi en cours", { autoClose: false });
-      setTimeout(() => { this.sendDataToBack(data) }, 2000);
+      sendDataToBack(data, `${process.env.REACT_APP_BACK_URL}checkPasswords.php`);
     }
   }
 
-
-  // DEGUEULASSE !!!
-  // Ceci est dupliqué dans PasswordInput Component
-  // cadeaaau !
-  sendDataToBack(data) {
-    const target = `${process.env.REACT_APP_BACK_URL}checkPasswords.php`;
-    const qs = require('qs');
-
-    axios({
-      method: 'post',
-      url: target,
-      data: qs.stringify(data)
-    }).then(res => {
-      console.log(res.data);
-      if (res.data.status == 1) {
-        toast.update(this.toastId, {
-          render: res.data.message,
-          type: toast.TYPE.SUCCESS,
-          autoClose: 4000
-        });
-        setTimeout(() => { this.props.history.push("/") }, 1000);
-      } else if (res.data.message){
-        toast.update(this.toastId, {
-          render: res.data.message,
-          type: toast.TYPE.ERROR,
-          autoClose: 4000
-        });
-      }
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
-  }
 
   render() {
     return (
