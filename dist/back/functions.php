@@ -46,13 +46,13 @@ function registerPointRepairment($pointId) {
   $query->execute();
 
   // 2 - on reprend toutes les données
-  $points = getAllPoints();
+  $point = getPointFromId($pointId);
 
   // 3 - et on les envoie à mercure
   define('DEMO_JWT', MERCURE_TOKEN);
   $postData = http_build_query([
       'topic' => MERCURE_POINTS_TOPIC,
-      'data' => json_encode($points),
+      'data' => json_encode($point[0]),
   ]);
   file_get_contents(MERCURE_URL, false, stream_context_create(['http' => [
       'method'  => 'POST',
