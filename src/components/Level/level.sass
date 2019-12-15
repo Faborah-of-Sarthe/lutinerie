@@ -4,12 +4,14 @@
   padding: 1em
   font-size: 2em
   margin: 1em
+  display: flex
+  align-items: center
   text-align: center
+  flex-direction: column
 
 .btn
-  background: $white
-  color: $dred
-  box-shadow: .1em .1em $dgreen
+  color: $white
+  font-size: 2.5rem
   cursor: pointer
   &.up
     margin-bottom: .5em
@@ -18,10 +20,13 @@
 
 .tracks
   height: 6em
-  width: 1em
-  background: $white
-  box-shadow: .1em 0 $dgreen
+  width: .8rem
+  background: #404040
+  box-shadow: inset -.1em 0 #2d2d2d
   position: relative
+  display: flex
+  justify-content: center
+  border-radius: 1rem
 
 .level-stick
   height: 1.5em
@@ -30,6 +35,16 @@
   overflow: hidden
   border-radius: 50%
   background: $lred
-  box-shadow: 0 .3em 0 .05em $dredopacity
+  box-shadow: .2rem .6rem 0 0 $dredopacity
   position: absolute
-  left: -.25em
+
+.level-stick::before 
+  content: ""
+  width: 10px
+  height: 10px
+  background: #fdd7d7
+  position: absolute
+  left: 11px
+  top: 10px
+  border-radius: 50%
+

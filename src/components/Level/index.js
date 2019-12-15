@@ -2,6 +2,8 @@
  * Import
  */
 import React, { Component } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowAltCircleUp, faArrowAltCircleDown } from '@fortawesome/free-solid-svg-icons'
 /* import PropTypes from 'prop-types'; */
 
 /**
@@ -51,13 +53,13 @@ class Level extends Component {
   render() {
     return (
       <div className="level-box">
-        <div className="btn up" onClick={this.moveUp}>&#x21A5;</div>
+        <div className="btn up" onClick={this.moveUp}><FontAwesomeIcon icon={ faArrowAltCircleUp } /></div>
         <div className="tracks">
           <div className="level-stick" style={{
             bottom: this.state.position + "em"
           }}>{this.state.status}</div>
         </div>
-        <div className="btn down" onClick={this.moveDown}>&#x21A7;</div>
+        <div className="btn down" onClick={this.moveDown}><FontAwesomeIcon icon={ faArrowAltCircleDown } /></div>
       </div>
     );
   }
