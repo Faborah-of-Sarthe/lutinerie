@@ -27,14 +27,14 @@ class PointPage extends Component {
   constructor({ slug, store }) {
     super();
     // const { store } = this.props;
-    this.store = store;    
+    this.store = store;
     this.slug = slug;
   }
 
   render() {
     const { bureau } = this.store.getState().app;
-    
-    
+
+
     return (
       <div className="pointpage">
         <Link to={`/`}>Retour</Link>
@@ -45,7 +45,7 @@ class PointPage extends Component {
         { (this.slug == 'stpetersbourg') &&
           <StPetersburgCoords slug={ this.slug } key={ this.slug } />
         }
-        { (this.slug == 'saragossa' || this.slug == 'sahara') &&
+        { (this.slug == 'saragossa' || this.slug == 'sahara' || this.slug == 'saidpur') &&
           <PasswordInput slug={ this.slug } key={ this.slug } />
         }
         { this.slug == 'sartrouville' && bureau == BUREAU_1 && <Detector slug={this.slug} />}
