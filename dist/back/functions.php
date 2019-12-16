@@ -13,7 +13,7 @@ function connectToDB() {
 }
 
 function getAllPoints() {
-  $sql = "SELECT slug, label, repaired, latitude, longitude FROM points";
+  $sql = "SELECT slug, label, repaired, latitude, longitude, indice FROM points";
   $db = connectToDB();
   $query = $db->query($sql);
   $points = $query->fetchAll(PDO::FETCH_ASSOC);
@@ -22,7 +22,7 @@ function getAllPoints() {
 
 function getPointFromId($pointId) {
   $db = connectToDB();
-  $query = $db->prepare("SELECT slug, label, repaired, latitude, longitude FROM points WHERE slug = :slug");
+  $query = $db->prepare("SELECT slug, label, repaired, latitude, longitude, indice FROM points WHERE slug = :slug");
   $query->bindParam(':slug', $pointId, PDO::PARAM_STR, 12);
   $query->execute();
   $point = $query->fetchAll(PDO::FETCH_ASSOC);

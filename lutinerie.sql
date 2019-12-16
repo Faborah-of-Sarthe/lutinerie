@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.7.28, for Linux (x86_64)
+-- MySQL dump 10.13  Distrib 5.7.26, for Linux (x86_64)
 --
--- Host: localhost    Database: apilutinerie
+-- Host: localhost    Database: lutinerie
 -- ------------------------------------------------------
--- Server version	5.7.28-0ubuntu0.16.04.2
+-- Server version	5.7.26-0ubuntu0.18.04.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -29,6 +29,7 @@ CREATE TABLE `points` (
   `latitude` decimal(12,8) NOT NULL,
   `longitude` decimal(12,8) NOT NULL,
   `password` varchar(200) DEFAULT NULL COMMENT 'si applicable',
+  `indice` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`slug`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -39,7 +40,7 @@ CREATE TABLE `points` (
 
 LOCK TABLES `points` WRITE;
 /*!40000 ALTER TABLE `points` DISABLE KEYS */;
-INSERT INTO `points` VALUES ('sacramento','Sacramento',0,38.57576400,-121.47885100,'plat'),('sahara','Sahara',0,23.80607800,11.28845200,'décrocher'),('saidpur','Saidpur',0,25.77852200,88.89737700,'instrument'),('saopaulo','Sao Paulo',0,-23.53377300,-46.62529000,'2230'),('saragossa','Saragosse',0,41.64969300,-0.88771200,'gobelet'),('sartrouville','Sartrouville',0,48.93719900,2.16440000,'argent'),('stpetersbourg','Saint Petersbourg',0,59.97666500,30.32083300,'DMS');
+INSERT INTO `points` VALUES ('sacramento','Sacramento',0,38.57576400,-121.47885100,'plat',NULL),('sahara','Sahara',0,23.80607800,11.28845200,'décrocher',NULL),('saidpur','Saidpur',0,25.77852200,88.89737700,'instrument',NULL),('saopaulo','Sao Paulo',0,-23.53377300,-46.62529000,'2230','Chaque levier peut avoir 4 positions'),('saragossa','Saragosse',0,41.64969300,-0.88771200,'gobelet',NULL),('sartrouville','Sartrouville',0,48.93719900,2.16440000,'argent',NULL),('stpetersbourg','Saint Petersbourg',0,59.97666500,30.32083300,'DMS',NULL);
 /*!40000 ALTER TABLE `points` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -52,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-12-15 16:02:10
+-- Dump completed on 2019-12-16 17:44:56
