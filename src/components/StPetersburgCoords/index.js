@@ -63,7 +63,7 @@ class StPetersburgCoords extends Component {
   render() {
     return (
       <div className="page-petersburg">
-        <form className="password-area" onSubmit={this.handleSubmit}>
+        <form className="password-zone" onSubmit={this.handleSubmit}>
           <div className="dms-line">
             <label>
               Nord :

@@ -19,9 +19,10 @@ import Receiver from 'src/containers/Sartrouville/receiver';
 /* import './app.sass'; */
 import PasswordInput from '../PasswordInput';
 import StPetersburgCoords from '../StPetersburgCoords';
+import Indice from '../Indice';
 import Levels from '../Levels';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCaretLeft, faInfoCircle } from '@fortawesome/free-solid-svg-icons'
+import { faCaretLeft } from '@fortawesome/free-solid-svg-icons'
 import { getPoint } from '../../store/reducer';
 /**
  * Code
@@ -46,7 +47,7 @@ class PointPage extends Component {
         <header>
           <Link to={`/`}><FontAwesomeIcon icon={ faCaretLeft } /> Retour</Link>
           <h1 className="slug">{ point.label }</h1>
-          <div className="indice"><FontAwesomeIcon icon={ faInfoCircle } /></div>
+          <Indice point={point} />
         </header>
         { (this.slug == 'saopaulo') &&
           <Levels slug={ this.slug } key={ this.slug } />
