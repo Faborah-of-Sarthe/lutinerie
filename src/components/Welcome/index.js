@@ -66,16 +66,16 @@ class Welcome extends Component {
                     <p>
                         Pour vous identifier, veuillez cliquer sur le bouton ci-dessous et entrer le mot de passe de votre bureau.
                     </p>
-                    <button className="button" onClick={this.step2}>S'identifier</button>
+                    <button className="button check-btn dark" onClick={this.step2}>S'identifier</button>
                 </div>
             
         } else if (step == 2) {
             this.page = 
                 <div className="intro">
                     Veuillez entrer le mot de passe propre à votre bureau :     
-                    <form className="password-area" onSubmit={this.handleSubmit}>
-                        <input type="text" name="name" onChange={this.handleChange} />
-                        <input type="submit" value="Envoyer" />
+                    <form className="password-zone" onSubmit={this.handleSubmit}>
+                        <input type="text" className="password" name="name" onChange={this.handleChange} />
+                        <input type="submit" className="button check-btn dark" value="Envoyer" />
                     </form>
                 </div>
             ;
