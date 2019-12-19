@@ -54,7 +54,7 @@ class PointPage extends Component {
           <Levels slug={ this.slug } key={ this.slug } />
         }
         { (this.slug == 'sacramento') &&
-          <CruelPanel slug={ this.slug } key={ this.slug } />
+          <CruelPanel slug={ this.slug } repaired={ point.repaired } key={ this.slug } />
         }
         { (this.slug == 'stpetersbourg') &&
           <StPetersburgCoords slug={ this.slug } key={ this.slug } />
