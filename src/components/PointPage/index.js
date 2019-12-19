@@ -22,6 +22,7 @@ import StPetersburgCoords from '../StPetersburgCoords';
 import CruelPanel from '../CruelPanel';
 import Indice from '../Indice';
 import Levels from '../Levels';
+import Denied from '../Denied';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretLeft } from '@fortawesome/free-solid-svg-icons'
 import { getPoint } from '../../store/reducer';
@@ -53,8 +54,11 @@ class PointPage extends Component {
         { (this.slug == 'saopaulo') &&
           <Levels slug={ this.slug } key={ this.slug } />
         }
-        { (this.slug == 'sacramento') &&
+        { (this.slug == 'sacramento') && bureau == BUREAU_2 &&
           <CruelPanel slug={ this.slug } repaired={ point.repaired } key={ this.slug } />
+        }
+        { (this.slug == 'sacramento') && bureau == BUREAU_1 &&
+          <Denied slug={ this.slug } key={ this.slug } />
         }
         { (this.slug == 'stpetersbourg') &&
           <StPetersburgCoords slug={ this.slug } key={ this.slug } />
