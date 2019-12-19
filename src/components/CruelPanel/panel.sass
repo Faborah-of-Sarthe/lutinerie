@@ -1,0 +1,195 @@
+@import ../../styles/vars
+
+
+.cruel-panel
+
+
+  .cruel-dashboard
+    background: #999999
+    border: 1rem solid #444
+    padding: 1rem
+    margin: 0 auto
+    width: 65rem
+    display: flex
+    flex-wrap: wrap
+    justify-content: flex-end
+  .cruel-btn
+    font-size: 1.2rem
+    color: $white
+    border: 0
+    border-radius: .3em
+    margin: 0.25rem
+  .serial
+    font-size: 2rem
+    display: flex
+    justify-content: center
+    align-items: flex-start
+    flex-direction: column
+    padding: .8rem 3rem
+    background: $white
+    margin-right: 3rem
+    .label
+      color: #333333
+    .number
+      color: #888888
+      margin-top: .5rem
+  .yellow
+    background: rgb(227, 204, 18)
+    color: $dred
+    box-shadow: 0 0.2em rgb(187, 167, 4)
+  .blue
+    background: rgb(44, 46, 186)
+    box-shadow: 0 0.2em rgba(24, 26, 140, 0.9)
+  .red
+    background: $lred
+    box-shadow: 0 .2em $dred
+  .green
+    background: $dgreen
+    box-shadow: 0 .2em rgba(21,47,34,.9)
+
+  .circle
+    border-radius: 50%
+
+  .square, .circle
+    width: 6em
+    height: 6em
+   
+
+  .btn-range 
+    margin: 0.5rem 0
+  .rectangle
+    width: 10em
+   
+
+    height: 4em
+
+  .big.square, .big.circle
+    width: 8em
+    height: 8em
+   
+
+  .big.rectangle
+    width: 14em
+    height: 6em
+   
+
+  .small.square, .small.circle
+    width: 4em
+    height: 4em
+   
+  .small.rectangle
+    width: 6em
+    height: 4em
+   
+
+  .levsection
+    display: flex
+    flex-direction: column
+    align-items: flex-end
+    justify-content: space-around
+
+  .levier
+    display: flex
+    span
+      color: rgba(0, 0, 0, 0.35)
+      margin-right: 1em
+
+  .screen.container
+    width: 18rem
+    height: 8rem
+    position: relative
+    .brandname
+      position: absolute
+      top: -1rem
+      color: rgba(254, 255, 254, 0.19)
+      font-size: 1em
+    .content
+      width: 100%
+      height: 100%
+      background: black
+      display: flex
+      justify-content: center
+      align-items: center
+    span
+      display: block
+      font-size: 4em
+      color: #19d719
+
+  .switch
+    &.container
+      width: 4em
+      height: 1em
+      background: #353535
+      display: flex
+      align-items: center
+      box-shadow: 0 .2em #1a1a1a inset
+      border-radius: .5em
+    .stick
+      width: 2em
+      height: 2em
+      border-radius: 50%
+
+  .switch.red
+    .stick
+      background: $lred
+      box-shadow: .1em .1em $dred
+  .fils
+    display: flex
+    .fil
+      display: flex
+      flex-direction: column
+      align-items: center
+      margin-right: 0.3rem
+      .top, .bottom
+        height: 1.5rem
+        width: 1rem
+        border-radius: 50% 50% 0 0
+        background: #777 
+      .bottom
+        border-radius: 0 0 50% 50%
+      .body
+        width: 0.6rem
+        height: 7rem
+        background: $lred
+    .fil3 .body
+      background: #222
+    .fil2 .body
+      background: $dgreen
+  .result-screen-wrapper
+      background: #333
+      width: 30rem
+      height: 12rem
+      margin: 0 auto
+      display: flex
+      align-items: center
+      justify-content: center
+      .screen-result
+        border: none
+        height: 8rem
+        width: 20rem
+        background: #777
+        box-shadow: inset 7px 6px 0 0 #555
+        display: flex
+        align-items: center
+        padding: 0 2rem
+        font-size: 3rem
+        color: #444
+        transition: all 1s linear
+        span
+          animation: blink 1s infinite
+          transition: none
+      .screen-result.error 
+        background: $lred
+        box-shadow: inset 7px 6px 0 0 $dred
+        color: $dred
+      .screen-result.found 
+        background: lighten($lgreen, 20%)
+        box-shadow: inset 7px 6px 0 0 $dgreen
+        color: $dgreen
+
+
+@keyframes blink
+  0%
+    opacity: 1
+  100%
+    opacity: 0
