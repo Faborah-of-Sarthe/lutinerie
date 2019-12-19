@@ -3,9 +3,6 @@
  */
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
-/* import PropTypes from 'prop-types'; */
-import axios from 'axios';
-import { toast } from 'react-toastify';
 
 /**
  * Local import
@@ -53,12 +50,16 @@ class Levels extends Component {
 
   render() {
     return (
-      <div className="leviers-area">
-        { this.state.levels.map((pos, id) => (
-          <Level key={id} id={id} pos={pos} changeCombination={this.changeCombination} />
-        )) }
-        <button onClick={this.handleSubmit}>Vérifier</button>
-      </div>
+      <div className="leviers-page">
+        <div className="leviers-area">
+          { this.state.levels.map((pos, id) => (
+            <Level key={id} id={id} pos={pos} changeCombination={this.changeCombination} />
+            )) }
+        </div>
+        <div className="button-level-wrapper">
+          <button className="button-verifier check-btn" onClick={this.handleSubmit}>Vérifier</button>
+        </div>
+      </div>  
     );
   }
 }

@@ -44,7 +44,7 @@ class App extends Component {
             <BrowserRouter>
                { !loading && <main>
                     {/* <ToastContainer autoClose={4000} /> */}
-                    <ReduxToastr />
+                    <ReduxToastr transitionIn='fadeIn' transitionOut='fadeOut' progressBar />
                     <Switch>
                     <Route exact path="/">
                         { !bureau && <Welcome /> }
