@@ -25,3 +25,25 @@ export const sendDataToBack = (data, target) => {
 
     }, 2000);
 }
+
+export const sendGuilty = (data, target) => {
+    
+    toastr.info('Envoi en cours', { timeOut: 1500});
+    setTimeout(() => { 
+        const qs = require('qs');
+
+        axios({
+            method: 'post',
+            url: target,
+            data: qs.stringify(data)
+        }).then(res => {
+            if (res.data.status != 1) {
+                toastr.error(res.data.message);
+            } 
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+
+    }, 2000);
+}
