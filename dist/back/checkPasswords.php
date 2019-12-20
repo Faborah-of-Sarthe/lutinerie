@@ -13,7 +13,7 @@ if (!empty($_POST) && isset($_POST['slug'])):
     ]);
   }
 
-  if (utf8_decode($_POST["password"]) == $pwdToGuess) {
+  if (utf8_decode(strtolower($_POST["password"])) == strtolower($pwdToGuess)) {
     registerPointRepairment($currentSlug);
     echo json_encode([
       "status" => 1,
