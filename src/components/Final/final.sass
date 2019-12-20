@@ -1,0 +1,49 @@
+@import './src/styles/_vars.sass';
+
+
+.overlay
+    position: absolute
+    top: 0
+    left: 0
+    bottom: 0
+    right: 0
+    background: rgba(0, 0, 0, 0.7)
+    display: flex
+    align-items: center
+    justify-content: center
+    padding: 1rem
+
+
+.final-question-wrapper
+    background: $lgreen
+    padding: 2rem
+    max-width: 60rem
+    animation: slidein .5s ease
+    .but
+        font-size: 1.5rem
+        margin: 1rem 0
+    .coupable
+        font-size: 1.7rem
+        text-align: center
+        margin-top: 2rem
+    .password-zone
+        input
+            display: block
+            margin: 2rem auto
+        .password 
+            background: $dgreen
+            border: 3px solid darken($dgreen, 10%) 
+            font-size: 1.5rem
+            padding: 1rem
+            height: 4rem
+            color: $white
+            font-family: 'Solway', serif
+            display: block
+            text-align: center
+
+
+@keyframes slidein 
+    0%
+        transform: translateY(-500%)
+    100%
+        transform: translateY(0)

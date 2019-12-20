@@ -10,9 +10,15 @@ const mercureMiddleware = (store) => (next) => (action) => {
             const eventSource = new EventSource(url);
             
             eventSource.onmessage = (e) => {
-                const point = (typeof e.data == 'string') ? JSON.parse(e.data) : e.data; 
-                store.dispatch(updatePoint(point.slug));
-                toastr.success('Point déverrouillé !', `Le point ${point.label} a été déverrouillé !`);
+                const point = (typeof e.data == 'string') ? JSON.parse(e.data) : e.data;
+                if(point.hasOwnProperty('type')){
+                    window.location.pathname = '/bravo'
+
+                }else {
+                    store.dispatch(updatePoint(point.slug));
+                    toastr.success('Point déverrouillé !', `Le point ${point.label} a été déverrouillé !`);
+                }
+                 
             };
             
         break;

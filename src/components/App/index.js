@@ -11,6 +11,7 @@ import ReduxToastr from 'react-redux-toastr'
 import Welcome from 'src/containers/Welcome';
 import Dashboard from 'src/containers/Dashboard';
 import PointPage from 'src/components/PointPage';
+import Bravo from 'src/components/Bravo'
 import { setBureau } from '../../store/reducer';
 
 
@@ -49,6 +50,9 @@ class App extends Component {
                     <Route exact path="/">
                         { !bureau && <Welcome /> }
                         { bureau && <Dashboard /> }
+                    </Route>
+                    <Route exact path="/bravo">
+                        <Bravo />
                     </Route>
                     {/* on crée un composant intermédiaire via la prop render avant d'appeler le notre */}
                     <Route

@@ -3,6 +3,7 @@
  */
 import React, { Component } from 'react';
 import axios from 'axios';
+import { toastr } from 'react-redux-toastr'
 import './welcome.sass';
 
 class Welcome extends Component {
@@ -40,8 +41,10 @@ class Welcome extends Component {
                 isSending: false
             });
             if (res.data.error == true) {
-                alert(res.data.message);
-            }else {                
+                toastr.error(res.data.message);
+            }else {            
+                toastr.success('Vous vous êtes bien connecté !');
+
                 setBureau(res.data.message);
             }
         })

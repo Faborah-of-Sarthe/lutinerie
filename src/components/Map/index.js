@@ -2,13 +2,28 @@ import React from "react";
 import { ComposableMap, Geographies, Geography, ZoomableGroup, Marker } from "react-simple-maps";
 import ReactTooltip from 'react-tooltip';
 import { Link } from 'react-router-dom';
-
+import Final from '../Final'
 import './map.sass';
 
 
 class Map extends React.Component {
+
+    state = {
+        mapComplete: false,
+    }
+
     componentDidUpdate() {
         ReactTooltip.rebuild()
+    }
+
+    componentDidMount(){
+        const { points } = this.props;
+
+        let mapComplete = points.some(e => e.repaired == '0');
+        
+        this.setState({
+            mapComplete: !mapComplete
+        })
     }
 
     render() {
@@ -16,6 +31,7 @@ class Map extends React.Component {
         const geoUrl = require('./map.json');
         return (
             <div className="map-area">
+                { this.state.mapComplete && <Final />}
               <ComposableMap
                 projection={'geoMercator'}
                 width={980}
