@@ -7,8 +7,8 @@ const mercureMiddleware = (store) => (next) => (action) => {
 
             const url = new URL(process.env.REACT_APP_MERCURE_HUB);
 
-            url.searchParams.append('topic', process.env.REACT_APP_MERCURE_TOPIC_URL, { withCredentials: true });
-            const eventSource = new EventSource(url);
+            url.searchParams.append('topic', process.env.REACT_APP_MERCURE_TOPIC_URL);
+            const eventSource = new EventSource(url, { withCredentials: true });
 
             eventSource.onmessage = (e) => {
                 const point = (typeof e.data == 'string') ? JSON.parse(e.data) : e.data;

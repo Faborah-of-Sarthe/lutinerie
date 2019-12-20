@@ -21,7 +21,7 @@ class Receiver extends Component {
             this.listenCoords();
         } else {
             this.setState({
-                found:true, 
+                found:true,
                 color: '#25ec25'
             })
         }
@@ -29,7 +29,7 @@ class Receiver extends Component {
 
     componentWillUnmount(){
         console.log(typeof this.eventSource);
-        
+
         if(typeof this.eventSource !== 'string') {
             this.eventSource.close();
         }
@@ -37,8 +37,8 @@ class Receiver extends Component {
     listenCoords = () => {
         const url = new URL(process.env.REACT_APP_MERCURE_HUB);
         url.searchParams.append('topic', process.env.REACT_APP_MERCURE_DETECTOR_TOPIC);
-        this.eventSource = new EventSource(url);
-        
+        this.eventSource = new EventSource(url, { withCredentials: true });
+
         this.eventSource.onmessage = (e) => {
             const data = JSON.parse(e.data)
 
@@ -54,7 +54,7 @@ class Receiver extends Component {
         };
     }
     displayColor = (data) => {
-        
+
         data.r = data.redColor;
         data.g = data.greenColor;
         data.b = 50;
@@ -63,9 +63,9 @@ class Receiver extends Component {
         this.setState({
             color: `rgb(${data.r},${data.g},${data.b})`,
             display
-        }) 
+        })
     }
-            
+
 
     render(){
         const {color, display, found} = this.state;
@@ -101,7 +101,7 @@ class Receiver extends Component {
                     </div>
                     <div className="drawer-front"></div>
                 </div>
-            </div>  
+            </div>
         )
     }
 }

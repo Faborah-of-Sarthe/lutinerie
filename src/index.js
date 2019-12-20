@@ -25,12 +25,11 @@ import store from 'src/store';
 const cookies = new Cookies();
 const token = process.env.REACT_APP_MERCURE_TOKEN;
 cookies.set("mercureAuthorization", token, {
-  path: process.env.REACT_APP_MERCURE_HUB,
+  path: "/"+process.env.REACT_APP_MERCURE_PATH,
+  domain: process.env.REACT_APP_DOMAIN,
   httpOnly: true,
-  secure: false,
-  sameSite: true
+  secure: false
  });
-console.log(cookies.get('mercureAuthorization'));
 
 const rootComponent = (
   <Provider store={store}>
