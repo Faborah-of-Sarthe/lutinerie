@@ -5,6 +5,8 @@ import '@babel/polyfill';
 import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
+import Cookies from 'universal-cookie';
+
 
 // on importe le composant BrowserRouter de react-router-dom
 
@@ -18,7 +20,13 @@ import store from 'src/store';
 
 /**
  * Code
- */ 
+ */
+
+const cookies = new Cookies();
+const token = process.env.REACT_APP_MERCURE_TOKEN;
+cookies.set("mercureAuthorization", token, { path: '/' });
+console.log(cookies.get('mercureAuthorization'));
+
 const rootComponent = (
   <Provider store={store}>
     <App />
