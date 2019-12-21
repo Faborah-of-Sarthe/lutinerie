@@ -4,7 +4,7 @@ require("config.php");
 
 function connectToDB() {
   try {
-    $db_connect = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME, DB_USER, DB_PASS);
+    $db_connect = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME . ";charset=utf8", DB_USER, DB_PASS);
   }
   catch (PDOException $e) {
   	die("Erreur en se connectant à la BD: " . $e->getMessage());

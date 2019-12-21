@@ -32,26 +32,26 @@ class Detector extends Component {
 
             this.setState(newState);
         }
-        
+
         this.setState({
             flowers: this.getFlowers(),
             grass: this.getGrass(),
         })
-        
-      
+
+
     }
-    
+
     componentWillUnmount(){
         document.removeEventListener('mousemove', this.sendPosition);
     }
     sendPosition = (event) => {
         if (this.state.gameFinished)
-            return 
+            return
 
         const { display } = this.state;
         const targetX = this.tresor.getBoundingClientRect().left + (this.tresor.offsetWidth / 2);
         const targetY = this.tresor.getBoundingClientRect().top + (this.tresor.offsetHeight / 2);
-        
+
 
         let resultX = Math.round(event.clientX * 255 / targetX);
         resultX = (resultX > 255) ? 255 - (resultX - 255) : resultX;
@@ -71,7 +71,7 @@ class Detector extends Component {
         };
 
         this.sendData(data);
-        
+
     }
     handleClick = (e) =>  {
 
@@ -100,13 +100,13 @@ class Detector extends Component {
                 type: 'win'
             }
             this.sendData(data);
-            
+
         })
         .catch(function (error) {
         console.log(error);
         });
-        
-        
+
+
     }
     sendData = (data) =>  {
         const http = require('http');
@@ -115,17 +115,17 @@ class Detector extends Component {
             topic: process.env.REACT_APP_MERCURE_DETECTOR_TOPIC,
             data: JSON.stringify(data),
         });
-        
+
         const req = http.request({
-            hostname: 'localhost',
-            port: '3000',
-            path: '/.well-known/mercure',
+            hostname: process.env.REACT_APP_MERCURE_HOSTNAME,
+            port: process.env.REACT_APP_MERCURE_PORT,
+            path: process.env.REACT_APP_MERCURE_PATH,
             method: 'POST',
             headers: {
                 'Authorization': 'Bearer '+ process.env.REACT_APP_MERCURE_TOKEN,
                 'Content-Type': 'application/x-www-form-urlencoded',
                 'Content-Length': Buffer.byteLength(postData),
-                
+
             },
         });
         req.write(postData);
@@ -133,7 +133,7 @@ class Detector extends Component {
     }
     hoverTresor = (e) => () => {
         const display = (e) ? 'block' : 'none';
-        
+
         this.setState({
             display
         })
@@ -149,7 +149,7 @@ class Detector extends Component {
             }}></img>);
             i++;
         }
-        
+
         return flowers;
     }
     getGrass = () => {
@@ -163,7 +163,7 @@ class Detector extends Component {
             }}></img>);
             i++;
         }
-        
+
         return grass;
     }
     render(){
@@ -192,5 +192,5 @@ class Detector extends Component {
             )
         }
     }
-    
-    export default Detector; 
+
+    export default Detector;
