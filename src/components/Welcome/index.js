@@ -23,7 +23,7 @@ class Welcome extends Component {
     handleSubmit = () => {
         event.preventDefault();
         const { setBureau} = this.props;
-        
+
         const target = `${process.env.REACT_APP_BACK_URL}checkBureau.php`;
         const data = {
             password: this.state.input
@@ -42,7 +42,7 @@ class Welcome extends Component {
             });
             if (res.data.error == true) {
                 toastr.error(res.data.message);
-            }else {            
+            }else {
                 toastr.success('Vous vous êtes bien connecté !');
 
                 setBureau(res.data.message);
@@ -55,27 +55,27 @@ class Welcome extends Component {
     render() {
         const { step } = this.state;
         if(step == 1) {
-            this.page = 
+            this.page =
                 <div className="intro">
                     <p>
-                        Insatisfaits de leurs conditions de travail, une poignée de lutins du Père Noël a décidé de mettre en péril la livraison des cadeaux 2019. Pour ce faire, ils ont saboté un certain nombre de points stratégiques : points de livraison, entrepôts de stockage, centres de contrôle… 
+                        Insatisfaits de leurs conditions de travail, une poignée de lutins du Père Noël a décidé de mettre en péril la livraison des cadeaux 2019. Pour ce faire, ils ont saboté un certain nombre de points stratégiques : points de livraison, entrepôts de stockage, centres de contrôle…
                     </p>
                     <p>
-                        Santa Claus a donc fait appel aux deux meilleurs pôles du Fier Bureau d’Investigation pour rétablir la situation : celui de la Sarthe et celui de la Savoie. Enquêteurs, à vous de jouer ! 
+                        Santa Claus a donc fait appel aux deux meilleurs pôles du Fier Bureau d’Investigation pour rétablir la situation : celui de la Sarthe et celui de la Savoie. Enquêteurs, à vous de jouer !
                     </p>
                     <p>
-                        Attention : cette mission requiert une grande coopération entre vos deux équipes. Par ailleurs, les lutins rebelles surveillant les réseaux de communication, vous ne pourrez communiquer qu’à travers un canal audio ! 
+                        Attention : cette mission requiert une grande coopération entre vos deux équipes. Par ailleurs, les lutins rebelles surveillant les réseaux de communication, vous ne pourrez communiquer qu’à travers un canal audio !
                     </p>
                     <p>
                         Pour vous identifier, veuillez cliquer sur le bouton ci-dessous et entrer le mot de passe de votre bureau.
                     </p>
                     <button className="button check-btn dark" onClick={this.step2}>S'identifier</button>
                 </div>
-            
+
         } else if (step == 2) {
-            this.page = 
+            this.page =
                 <div className="intro">
-                    Veuillez entrer le mot de passe propre à votre bureau :     
+                    Veuillez entrer le mot de passe propre à votre bureau :
                     <form className="password-zone" onSubmit={this.handleSubmit}>
                         <input type="text" className="password" name="name" onChange={this.handleChange} />
                         <input type="submit" className="button check-btn dark" value="Envoyer" />

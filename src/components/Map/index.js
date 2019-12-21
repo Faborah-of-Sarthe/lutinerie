@@ -20,7 +20,7 @@ class Map extends React.Component {
         const { points } = this.props;
 
         let mapComplete = points.some(e => e.repaired == '0');
-        
+
         this.setState({
             mapComplete: !mapComplete
         })
@@ -83,7 +83,9 @@ class Map extends React.Component {
                         </Link>
                     ))}
                 </ZoomableGroup>
+
               </ComposableMap>
+              <h1 class="footer">Récapitulatif de la mission : rétablir les points stratégiques pour que le Père Noël puisse assurer sa livraison.</h1>
               <ReactTooltip />
             </div>
         )
